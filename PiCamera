@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=PiCamera
+Comment=Prise de photo avec la PiCamera
+Terminal=false
+StartupNotify=false
+Exec=/home/pi/Camera_module/PiCamera_exec
+Icon=/home/pi/Camera_module/Assets/logo.png
+Version=1.0
+Path=/home/pi/Camera_module

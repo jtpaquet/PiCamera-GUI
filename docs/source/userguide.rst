@@ -23,9 +23,9 @@ Guide de l'utilisateur
 Démarrage rapide
 ================
 
-Si vous avez téléchargé le dossier au complet, vous remarquerez deux dossiers dans le répertoire principal: *Captures* et *Vidéo*. Ce sont les dossiers dans lesquels
+Si vous avez téléchargé le dossier au complet, vous remarquerez deux dossiers dans le répertoire principal: **Captures** et **Vidéo**. Ce sont les dossiers dans lesquels
 seront enregistrées vos photos et vidéos prises avec l'application. Si vous souhaitez enregistrer vos captures dans un autre répertoire vous pouvez commencer par ouvrir le 
-menu *Fichier* et choisir de nouveaux répertoires. Pour plus d'options, consultez la section :ref:`save`.
+menu **Fichier** et choisir de nouveaux répertoires. Pour plus d'options, consultez la section :ref:`save`.
 
 Vous pouvez maintenant prendre des photos en appuyant sur la barre espace ou sur le bouton avec l'icône d'un appareil photo dans le menu *Commandes* sous l'aperçu. 
 Remarquez la barre d'état en bas à droite: elle indique si vous pouvez prendre une photo et ensuite dans quel répertoire la capture est enregistrée.
@@ -49,19 +49,20 @@ appuyez à nouveau sur le bouton. La barre d'état vous dira dans quel répertoi
 Zoomer
 ======
 
-Vous pouvez zoomer dans l'image à l'aide de la glissoire *Zoom*. Après avoir choisi le zoom désiré, vous pouvez vous déplacer avec les deux autres glissoires *X* et *Y*. 
-Celles-ci vous feront déplacer horizontalement et verticalement respectivement. Pour la glissoire *X*, une valeur 0 indique que vous vous trouvez complètement à gauche de 
-l'image et une valeur de 100, complètement à droite. Pour la glissoire *Y*, 0 indique que vous vous trouvez complètement en haut de 
+Vous pouvez zoomer dans l'image à l'aide de la glissoire **Zoom**. Après avoir choisi le zoom désiré, vous pouvez vous déplacer avec les deux autres glissoires **X** et **Y**. 
+Celles-ci vous feront déplacer horizontalement et verticalement respectivement. Pour la glissoire **X**, une valeur 0 indique que vous vous trouvez complètement à gauche de 
+l'image et une valeur de 100, complètement à droite. Pour la glissoire **Y**, 0 indique que vous vous trouvez complètement en haut de 
 l'image et une valeur de 100, complètement en bas.    
 
 
 .. note::
 
-	Il y a une sécurité qui limite le zoom maximal dans le code. À un certain point, la caméra zoome sur seulement quelques pixels et cela faisait planter l'application. 
-	Si vous devez absolument zoomer plus que ce que le programme propose, vous pouvez changer la valeur 1.05 à la ligne 780 du fichier PiCameraGUI.py dans la fonction 
+	Il y a une sécurité qui limite le zoom maximal dans le code. À un certain point, la caméra zoome sur seulement quelques pixels et cela fait planter l'application. 
+	Si vous devez absolument zoomer plus que ce que le programme propose, vous pouvez changer la valeur 1.05 à la ligne 780 du fichier **PiCameraGUI.py** dans la fonction 
 	set_previewScale par 1.00. Cela vous permettera de zoomer jusqu'aux limites de la PiCamera, mais c'est déconseillé. Vous êtes conseillez de remettre ce paramètre à 1.05 par la suite.
 
-Pour réinitialiser le zoom de l'image comme elle était à l'ouverture du programme, appuyez sur le bouton *Réinitialiser* sous la glissoire *Y*. Ça fait la même chose que de remettre les
+Pour réinitialiser le zoom de l'image comme elle était à l'ouverture du programme, appuyez sur le bouton **Réinitialiser** sous la glissoire **Y**. 
+Ça fait la même chose que de remettre les
 trois glissoires à 0.
 
 .. _image:

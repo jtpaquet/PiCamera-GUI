@@ -36,7 +36,7 @@ Liens
 .. _module de caméra: https://www.raspberrypi.org/products/camera-module-v2/
 .. _Pi Camera: https://picamera.readthedocs.io/
 .. _code source: https://github.com/jtpaquet/PiCamera-GUI
-.. _documentation: https://picameragui.readthedocs.io/
+.. _documentation: http://picamera-gui.readthedocs.io/en/latest/
 .. _Licence BSD: https://opensource.org/licenses/BSD-3-Clause
 
 .. _content:

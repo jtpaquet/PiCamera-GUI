@@ -1,4 +1,4 @@
-# PiCamera-GUI
+# [PiCamera-GUI](http://picamera-gui.readthedocs.io/en/latest/)
 
 Ce programme fournit un interface graphique (GUI) pour le [module de caméra](https://www.raspberrypi.org/products/camera-module-v2/) de [Raspberry Pi](https://www.raspberrypi.org/).
 Ce programme est écrit dans le language de programmation [Python](https://www.python.org/) à l'aide de la librarie Tkinter.
@@ -73,5 +73,5 @@ Consultez aussi la liste des [collaborateurs](https://github.com/jtpaquet/PiCame
 
 ## Autres
 
-* Toute la [documentation](https://picameragui.readthedocs.io/) est disponible sur ReadTheDocs
+* Toute la [documentation](http://picamera-gui.readthedocs.io/en/latest/) est disponible sur ReadTheDocs
 * Merci à la documentation complète sur les modules de la [Pi Camera](https://picamera.readthedocs.io/) accesssible sur Read The Docs

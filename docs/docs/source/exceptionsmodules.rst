@@ -12,19 +12,19 @@ Ces deux classes sont utilisées dans le fichier "Main.py". Si le logiciel ne d�
 * Redémarrer le Rasperry Pi avec la caméra branchée
 
 Si le logiciel ne peut importer les packages de la librairie Tkinter, il lèvera une TkinterError. Dans ce cas, il faut s'assurer d'avoir Python 3 sur le Raspberry Pi. Peut-être installer messagebox
-La création des deux classes sont basées sur le modèle `suivant`_.
+La création des deux classes sont basées sur le modèle `suivant`_. ::
 
 
-# Exception de Tkinter
-class TkinterError(Exception):
-    def __init__(self, mismatch):
-        Exception.__init__(self, mismatch)
-        
-
-# Exception de la PiCamera
-class PiCameraError(Exception):
-    def __init__(self, mismatch):
-        Exception.__init__(self, mismatch)
+	# Exception de Tkinter
+	class TkinterError(Exception):
+	    def __init__(self, mismatch):
+	        Exception.__init__(self, mismatch)
+	        
+	
+	# Exception de la PiCamera
+	class PiCameraError(Exception):
+	    def __init__(self, mismatch):
+        	Exception.__init__(self, mismatch)
 
 
 .. _Exception: https://docs.python.org/2/tutorial/errors.html

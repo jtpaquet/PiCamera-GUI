@@ -11,7 +11,8 @@ et de mettre le widget parent en premier argument et le texte à afficher en deu
 
 	from CallTipWindow import createToolTip
 
-	note = "Activer un mode d'exposition\nempêche la configuration manuelle\nde l'iso et du shutter speed"
+	note = "Activer un mode d'exposition\nempêche la configuration manuelle
+		\nde l'iso et du shutter speed"
 	createToolTip(self.modeLabel, note)
 
 

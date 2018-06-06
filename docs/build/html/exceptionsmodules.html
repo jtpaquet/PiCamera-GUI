@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Modules d’exception &mdash; PiCameraGUI 1.0 documentation</title>
+  <title>5. Modules d’exception &mdash; PiCameraGUI 1.0 documentation</title>
   
 
   
@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Droits d’auteurs" href="rights.html" />
+    <link rel="prev" title="4. Call Tip Window" href="calltipwindow.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -77,9 +79,13 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Notes sur le code</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">2. Guide de l’utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">3. Notes sur le code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calltipwindow.html">4. Call Tip Window</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Modules d’exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rights.html">6. Droits d’auteurs</a></li>
 </ul>
 
             
@@ -125,7 +131,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Modules d’exception</li>
+      <li>5. Modules d’exception</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -145,7 +151,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="modules-d-exception">
-<span id="exceptionsmodules"></span><h1>Modules d’exception<a class="headerlink" href="#modules-d-exception" title="Permalink to this headline">¶</a></h1>
+<span id="exceptionsmodules"></span><h1>5. Modules d’exception<a class="headerlink" href="#modules-d-exception" title="Permalink to this headline">¶</a></h1>
 <p>Deux classes d’exceptions qui héritent de la classe <a class="reference external" href="https://docs.python.org/2/tutorial/errors.html">Exception</a> de la librairie standard de Python. Cela permet de créer deux nouveaux types d’erreurs: les PiCameraError TkinterError.
 Ces deux classes sont utilisées dans le fichier “Main.py”. Si le logiciel ne détecte pas la PiCamera, il lèvera une PiCameraError et propose deux solutions:</p>
 <ul class="simple">
@@ -154,22 +160,18 @@ Ces deux classes sont utilisées dans le fichier “Main.py”. Si le logiciel n
 </ul>
 <p>Si le logiciel ne peut importer les packages de la librairie Tkinter, il lèvera une TkinterError. Dans ce cas, il faut s’assurer d’avoir Python 3 sur le Raspberry Pi. Peut-être installer messagebox
 La création des deux classes sont basées sur le modèle <a class="reference external" href="https://docs.python.org/2/tutorial/errors.html#user-defined-exceptions">suivant</a>.</p>
-<p># Exception de Tkinter
-class TkinterError(Exception):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>def __init__(self, mismatch):</dt>
-<dd>Exception.__init__(self, mismatch)</dd>
-</dl>
-</div></blockquote>
-<p># Exception de la PiCamera
-class PiCameraError(Exception):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>def __init__(self, mismatch):</dt>
-<dd>Exception.__init__(self, mismatch)</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exception de Tkinter</span>
+<span class="k">class</span> <span class="nc">TkinterError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mismatch</span><span class="p">):</span>
+        <span class="ne">Exception</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mismatch</span><span class="p">)</span>
+
+
+<span class="c1"># Exception de la PiCamera</span>
+<span class="k">class</span> <span class="nc">PiCameraError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mismatch</span><span class="p">):</span>
+        <span class="ne">Exception</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mismatch</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -177,6 +179,15 @@ class PiCameraError(Exception):</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rights.html" class="btn btn-neutral float-right" title="6. Droits d’auteurs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="calltipwindow.html" class="btn btn-neutral" title="4. Call Tip Window" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

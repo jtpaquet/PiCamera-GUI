@@ -37,6 +37,7 @@ PiCameraGUI.py
 
 Ce fichier contient la classe `PiCameraGUI` qui s'occupe de la création de l'interface ainsi que des fonctionnalités du programme.
 
+.. automodule:: PiCameraGUI.PiCameraGUI
 
 
 .. _layout:
@@ -45,13 +46,20 @@ Disposition de l'interface
 ==========================
 
 Si vous devez ajouter, modifier ou supprimer des fonctionnalités, vous devrez connaitre la disposition des objets dans la fenêtre.
-Voici la disposition générale du logiciel. Celle-ci contient les widgets qui servent à l'organisation et à la disposition des boutons.
+Voici l'a r c h i t e c t u r e du logiciel. Les `Frames` agissent comme des fenêtres qui contiennent les boutons et autres widgets. Les canvas servent à contenir les images.
+Elles servent donc à l'organisation et à la disposition. Les boutons, `scales`, `entry`, `listbox`, `spinbox` servent à utiliser ou changer une fonctionnalité.
 
-.. image:: tooltip.png
+.. image:: layout.png
 	:align: center
 
-La disposition suivante contient plutôt les boutons. Si vous devez modifier des fonctionnalités, cherchez ici.
+* 1: self.seqButton
+* 2: self.photoButton
+* 3: self.videoButton
+* 4: self.hflipButton
+* 5: self.rotateButton
+* 6: self.vflipButton
+* 7: self.etatCanvas
 
-.. image:: tooltip.png
-	:align: center
+
+
 

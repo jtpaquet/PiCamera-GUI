@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Call Tip Window &mdash; PiCameraGUI 1.0 documentation</title>
+  <title>4. Call Tip Window &mdash; PiCameraGUI 1.0 documentation</title>
   
 
   
@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Modules d’exception" href="exceptionsmodules.html" />
+    <link rel="prev" title="3. Notes sur le code" href="code.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -77,9 +79,13 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Notes sur le code</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">2. Guide de l’utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">3. Notes sur le code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Call Tip Window</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptionsmodules.html">5. Modules d’exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rights.html">6. Droits d’auteurs</a></li>
 </ul>
 
             
@@ -125,7 +131,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Call Tip Window</li>
+      <li>4. Call Tip Window</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -145,13 +151,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="call-tip-window">
-<span id="calltipwindow"></span><h1>Call Tip Window<a class="headerlink" href="#call-tip-window" title="Permalink to this headline">¶</a></h1>
+<span id="calltipwindow"></span><h1>4. Call Tip Window<a class="headerlink" href="#call-tip-window" title="Permalink to this headline">¶</a></h1>
 <p>Ce <a class="reference external" href="http://www.voidspace.org.uk/python/weblog/arch_d7_2006_07_01.shtml#e387">package</a> sert à afficher un label en survolant un objet Tkinter.</p>
 <p>Par exemple, pour attacher un ToolTip au Label “self.modeLabel”, il suffit d’appeler la fonction “createToolTip” à partir du fichier CallTipWindow.py
 et de mettre le widget parent en premier argument et le texte à afficher en deuxième argument.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CallTipWindow</span> <span class="k">import</span> <span class="n">createToolTip</span>
 
-<span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Activer un mode d&#39;exposition</span><span class="se">\n</span><span class="s2">empêche la configuration manuelle</span><span class="se">\n</span><span class="s2">de l&#39;iso et du shutter speed&quot;</span>
+<span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Activer un mode d&#39;exposition</span><span class="se">\n</span><span class="s2">empêche la configuration manuelle</span>
+        \<span class="n">nde</span> <span class="n">l</span><span class="s1">&#39;iso et du shutter speed&quot;</span>
 <span class="n">createToolTip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeLabel</span><span class="p">,</span> <span class="n">note</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -164,6 +171,15 @@ et de mettre le widget parent en premier argument et le texte à afficher en deu
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exceptionsmodules.html" class="btn btn-neutral float-right" title="5. Modules d’exception" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="code.html" class="btn btn-neutral" title="3. Notes sur le code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Notes sur le code &mdash; PiCameraGUI 1.0 documentation</title>
+  <title>3. Notes sur le code &mdash; PiCameraGUI 1.0 documentation</title>
   
 
   
@@ -29,7 +29,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="quickstart.html" /> 
+    <link rel="next" title="4. Call Tip Window" href="calltipwindow.html" />
+    <link rel="prev" title="2. Guide de l’utilisateur" href="userguide.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,13 +80,17 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes sur le code</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#main-py">Main.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#picameragui-py">PiCameraGUI.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#disposition-de-l-interface">Disposition de l’interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">2. Guide de l’utilisateur</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Notes sur le code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main-py">3.1. Main.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#picameragui-py">3.2. PiCameraGUI.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disposition-de-l-interface">3.3. Disposition de l’interface</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="calltipwindow.html">4. Call Tip Window</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptionsmodules.html">5. Modules d’exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rights.html">6. Droits d’auteurs</a></li>
 </ul>
 
             
@@ -131,7 +136,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Notes sur le code</li>
+      <li>3. Notes sur le code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,10 +156,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="notes-sur-le-code">
-<span id="code"></span><h1>Notes sur le code<a class="headerlink" href="#notes-sur-le-code" title="Permalink to this headline">¶</a></h1>
+<span id="code"></span><h1>3. Notes sur le code<a class="headerlink" href="#notes-sur-le-code" title="Permalink to this headline">¶</a></h1>
 <p>Voici un résumé de ce que fait le code. La plupart des commentaires sont déjà présents dans les fichiers, n’hésitez pas à les consulter au besoin.</p>
 <div class="section" id="main-py">
-<span id="main"></span><h2>Main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
+<span id="main"></span><h2>3.1. Main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
 <p>En premier lieu, le programme essaie de détecter s’il y a des problèmes d’initialisation.
 D’abord, il détecte si Python peut bel et bien initialiser la fenêtre et, ensuite, si il peut initialiser l’objet <a class="reference external" href="https://picamera.readthedocs.io/en/release-1.10/index.html">PiCamera</a>.
 S’il ne peut pas, il lèves deux types d’erreurs et propose des solutions exposées <span class="xref std std-ref">exceptionsmodules:ici</span>.</p>
@@ -167,16 +172,24 @@ Pour mieux comprendre la fonction <a class="reference external" href="http://wik
 mais si c’est le cas, il se doit d’effacer l’instance <cite>camera</cite> pour éviter les problèmes de mémoire.</p>
 </div>
 <div class="section" id="picameragui-py">
-<span id="gui"></span><h2>PiCameraGUI.py<a class="headerlink" href="#picameragui-py" title="Permalink to this headline">¶</a></h2>
+<span id="gui"></span><h2>3.2. PiCameraGUI.py<a class="headerlink" href="#picameragui-py" title="Permalink to this headline">¶</a></h2>
 <p>Ce fichier contient la classe <cite>PiCameraGUI</cite> qui s’occupe de la création de l’interface ainsi que des fonctionnalités du programme.</p>
 </div>
 <div class="section" id="disposition-de-l-interface">
-<span id="layout"></span><h2>Disposition de l’interface<a class="headerlink" href="#disposition-de-l-interface" title="Permalink to this headline">¶</a></h2>
+<span id="layout"></span><h2>3.3. Disposition de l’interface<a class="headerlink" href="#disposition-de-l-interface" title="Permalink to this headline">¶</a></h2>
 <p>Si vous devez ajouter, modifier ou supprimer des fonctionnalités, vous devrez connaitre la disposition des objets dans la fenêtre.
-Voici la disposition générale du logiciel. Celle-ci contient les widgets qui servent à l’organisation et à la disposition des boutons.</p>
-<img alt="_images/tooltip.png" class="align-center" src="_images/tooltip.png" />
-<p>La disposition suivante contient plutôt les boutons. Si vous devez modifier des fonctionnalités, cherchez ici.</p>
-<img alt="_images/tooltip.png" class="align-center" src="_images/tooltip.png" />
+Voici l’a r c h i t e c t u r e du logiciel. Les <cite>Frames</cite> agissent comme des fenêtres qui contiennent les boutons et autres widgets. Les canvas servent à contenir les images.
+Elles servent donc à l’organisation et à la disposition. Les boutons, <cite>scales</cite>, <cite>entry</cite>, <cite>listbox</cite>, <cite>spinbox</cite> servent à utiliser ou changer une fonctionnalité.</p>
+<img alt="_images/layout.png" class="align-center" src="_images/layout.png" />
+<ul class="simple">
+<li>1: self.seqButton</li>
+<li>2: self.photoButton</li>
+<li>3: self.videoButton</li>
+<li>4: self.hflipButton</li>
+<li>5: self.rotateButton</li>
+<li>6: self.vflipButton</li>
+<li>7: self.etatCanvas</li>
+</ul>
 </div>
 </div>
 
@@ -188,8 +201,10 @@ Voici la disposition générale du logiciel. Celle-ci contient les widgets qui s
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="calltipwindow.html" class="btn btn-neutral float-right" title="4. Call Tip Window" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="quickstart.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="userguide.html" class="btn btn-neutral" title="2. Guide de l’utilisateur" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

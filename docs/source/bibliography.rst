@@ -8,7 +8,7 @@ Bibliographie
 Vous trouverez ici toutes les documentations utilisées pour créer le logiciel.
 
 
-.. rubric:: Footnotes
+.. rubric:: Références
 
 .. [#f1] Tkinter `<http://www.python.org/>`_
 

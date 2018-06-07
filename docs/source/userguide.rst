@@ -74,6 +74,27 @@ trois glissoires à 0.
 Paramètres de l'image
 =====================
 
+Vous pouvez ajuster les paramètres de l'image avec les options sous le menu Exposition. L'``ISO`` change la luminosité de l'image ainsi que la quantité de `grain`/bruit.
+Un faible ISO donnera une image claire en terme de bruit, mais sombre en terme de lumière. Un ISO élevé fera augmenter la luminosité de l'image, mais augmentera aussi la quantité de grain.
+Le ``shutter speed`` change le temps d'exposition. Un shutter speed faible permet de capter plus de lumière et d'avoir une image plus éclairée. 
+Un shutter speed plus élevé permet de prendre une photo plus figée dans le temps au détriment de capter moins de lumière. 
+Lorsqu'il y a beaucoup de mouvement, on voudrait avoir un shutter speed élevé pour éviter un flou.
+Les ``modes d'exposition`` sont présentés dans la `rubrique`_ de la documentation de la picamera. Ce sont des modes préprogrammés.
+Veuillez consulter ce `lien`_ pour de plus amples explications.
+
+.. _lien: https://photographylife.com/iso-shutter-speed-and-aperture-for-beginners
+
+.. _rubrique: https://picamera.readthedocs.io/en/release-1.10/api_camera.html#picamera.camera.PiCamera.start_preview
+
+
+.. note::
+
+	Activer un mode d'exposition empêche la configuration manuelle de l'``ISO`` et du ``shutter speed``.
+
+.. note::
+
+	On ne peut changer l'ouverture mécanique de la PiCamera. Par contre, vous pouvez zoomer avec l'option décrite plus haut, mais sachez que l'ouverture reste fixe.
+
 
 
 .. _resolution:

@@ -21,7 +21,7 @@ L'instance `app` de la classe :ref:`gui` est crée avec ``win`` comme ``root`` e
 	win.mainloop()
 
 Essentiellement, il s'agit d'une boucle infinie dans laquelle la fenêtre réagit aux divers événements (cliques, touches, déplacements de la souris, etc.).
-Pour mieux comprendre la fonction `mainloop()`_ de Tkinter, consulter le sujet `suivant`_ sur **Stack Overflow**. Techniquement, le programme n'est pas supposé quitter la boucle `mainloop`, 
+Pour mieux comprendre la fonction `mainloop()`_ de Tkinter, consulter le sujet `suivant`_ sur **Stack Overflow**. Techniquement, le programme n'est pas supposé quitter la boucle ``mainloop``, 
 mais si c'est le cas, il se doit d'effacer l'instance `camera` pour éviter les problèmes de mémoire.
 
 

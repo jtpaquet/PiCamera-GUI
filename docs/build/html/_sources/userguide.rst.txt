@@ -18,6 +18,10 @@ Guide de l'utilisateur
 .. _page: https://picamera.readthedocs.io/en/release-1.10/api_camera.html#picamera.camera.PiCamera.start_preview
 
 
+.. image:: _static/gui.png
+	:align: center
+
+
 .. _quickstart:
 
 Démarrage rapide

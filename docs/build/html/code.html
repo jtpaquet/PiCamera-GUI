@@ -163,18 +163,19 @@
 <span id="main"></span><h2>3.1. Main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
 <p>En premier lieu, le programme essaie de détecter s’il y a des problèmes d’initialisation.
 D’abord, il détecte si Python peut bel et bien initialiser la fenêtre et, ensuite, si il peut initialiser l’objet <a class="reference external" href="https://picamera.readthedocs.io/en/release-1.10/index.html">PiCamera</a>.
-S’il ne peut pas, il lèves deux types d’erreurs et propose des solutions exposées <a class="reference internal" href="exceptionsmodules.html#exceptionsmodules"><span class="std std-ref">Modules d’exception</span></a>.</p>
-<p>L’instance <cite>app</cite> de la classe <a class="reference internal" href="#gui"><span class="std std-ref">PiCameraGUI.py</span></a> est crée avec <cite>win</cite> comme <cite>root</cite> et <cite>camera</cite> comme objet <cite>PiCamera</cite>. Le programme exécute ensuite la ligne:</p>
+S’il ne peut pas, il lèves deux types d’erreurs et propose des solutions exposées <a class="reference internal" href="exceptionsmodules.html#exceptionsmodules"><span class="std std-ref">Modules d’exception</span></a>.
+`
+L’instance <cite>app</cite> de la classe <a class="reference internal" href="#gui"><span class="std std-ref">PiCameraGUI.py</span></a> est crée avec <code class="docutils literal notranslate"><span class="pre">win</span></code> comme <code class="docutils literal notranslate"><span class="pre">root</span></code> et <code class="docutils literal notranslate"><span class="pre">camera</span></code> comme objet <code class="docutils literal notranslate"><span class="pre">PiCamera</span></code>. Le programme exécute ensuite la ligne:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">win</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Essentiellement, il s’agit d’une boucle infinie dans laquelle la fenêtre réagit aux divers événements (cliques, touches, déplacements de la souris, etc.).
-Pour mieux comprendre la fonction <a class="reference external" href="http://wiki.tcl.tk/2029">mainloop()</a> de Tkinter, consulter le sujet <a class="reference external" href="https://stackoverflow.com/questions/29158220/tkinter-understanding-mainloop?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">suivant</a> sur <strong>Stack Overflow</strong>. Techniquement, le programme n’est pas supposé quitter la boucle <cite>mainloop</cite>,
+Pour mieux comprendre la fonction <a class="reference external" href="http://wiki.tcl.tk/2029">mainloop()</a> de Tkinter, consulter le sujet <a class="reference external" href="https://stackoverflow.com/questions/29158220/tkinter-understanding-mainloop?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">suivant</a> sur <strong>Stack Overflow</strong>. Techniquement, le programme n’est pas supposé quitter la boucle <code class="docutils literal notranslate"><span class="pre">mainloop</span></code>,
 mais si c’est le cas, il se doit d’effacer l’instance <cite>camera</cite> pour éviter les problèmes de mémoire.</p>
 </div>
 <div class="section" id="picameragui-py">
 <span id="gui"></span><h2>3.2. PiCameraGUI.py<a class="headerlink" href="#picameragui-py" title="Permalink to this headline">¶</a></h2>
-<p>Ce fichier contient la classe <cite>PiCameraGUI</cite> qui s’occupe de la création de l’interface ainsi que des fonctionnalités du programme.</p>
+<p>Ce fichier contient la classe <code class="docutils literal notranslate"><span class="pre">PiCameraGUI</span></code> qui s’occupe de la création de l’interface ainsi que des fonctionnalités du programme.</p>
 <dl class="class">
 <dt id="PiCameraGUI.PiCameraGUI">
 <em class="property">class </em><code class="descclassname">PiCameraGUI.</code><code class="descname">PiCameraGUI</code><span class="sig-paren">(</span><em>root</em>, <em>camera</em>, <em>title</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI" title="Permalink to this definition">¶</a></dt>
@@ -199,7 +200,7 @@ root: instance de Tk() ou Toplevel() de la librairie tkinter</p>
 <span id="layout"></span><h2>3.3. Disposition de l’interface<a class="headerlink" href="#disposition-de-l-interface" title="Permalink to this headline">¶</a></h2>
 <p>Si vous devez ajouter, modifier ou supprimer des fonctionnalités, vous devrez connaitre la disposition des objets dans la fenêtre.
 Voici l’architecture du logiciel. Les <cite>Frames</cite> agissent comme des fenêtres qui contiennent les boutons et autres widgets. Les canvas servent à contenir les images.
-Elles servent donc à l’organisation et à la disposition. Les boutons, <cite>scales</cite>, <cite>entry</cite>, <cite>listbox</cite>, <cite>spinbox</cite> servent à utiliser ou changer une fonctionnalité.</p>
+Elles servent donc à l’organisation et à la disposition. Les <code class="docutils literal notranslate"><span class="pre">buttons</span></code>, <code class="docutils literal notranslate"><span class="pre">scales</span></code>, <code class="docutils literal notranslate"><span class="pre">entry</span></code>, <code class="docutils literal notranslate"><span class="pre">listbox</span></code>, <code class="docutils literal notranslate"><span class="pre">spinbox</span></code> servent à utiliser ou changer une fonctionnalité.</p>
 <img alt="_images/layout.png" class="align-center" src="_images/layout.png" />
 <ul class="simple">
 <li>1: self.seqButton</li>

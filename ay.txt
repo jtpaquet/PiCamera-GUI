@@ -1,2 +1,0 @@
-numpy==1.12.1
-picamera==1.13

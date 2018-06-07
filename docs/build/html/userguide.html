@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Guide de l’utilisateur &mdash; PiCameraGUI 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Notes sur le code" href="code.html" />
+    <link rel="prev" title="1. Installation" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PiCameraGUI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Guide de l’utilisateur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#demarrage-rapide">2.1. Démarrage rapide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zoomer">2.2. Zoomer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametres-de-l-image">2.3. Paramètres de l’image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changer-la-resolution">2.4. Changer la résolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#afficher-un-texte">2.5. Afficher un texte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modifier-l-endroit-de-la-sauvegarde">2.6. Modifier l’endroit de la sauvegarde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autres-fonctionnalites">2.7. Autres fonctionnalités</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">3. Notes sur le code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calltipwindow.html">4. Call Tip Window</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptionsmodules.html">5. Modules d’exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">6. Bibliographie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rights.html">7. Droits d’auteurs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PiCameraGUI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Guide de l’utilisateur</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="guide-de-l-utilisateur">
+<span id="userguide"></span><h1>2. Guide de l’utilisateur<a class="headerlink" href="#guide-de-l-utilisateur" title="Permalink to this headline">¶</a></h1>
+<p>À l’initialisation du logiciel, l’aperçu en temps réel devrait apparaître. Vous avez alors plusieurs fonctionnalités à votre disposition.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Le prévisionnement est un <a class="reference external" href="https://en.wikipedia.org/wiki/Overlay_(programming)">Overlay</a>, ce qui signifie qu’il est généré «par-dessus» l’écran.
+C’est pour cela qu’en déplaçant la fenêtre, il ne suit pas immédiatement la position de la fenêtre. Son ajustement est fait de manière à ce que sa position s’adapte lorsque le programme
+détecte un mouvement de la fenêtre principale (<cite>root</cite>) et la fonction est seulement appelée lorsque le déplacement du <cite>root</cite> est complété.
+On ne peut pas prendre de capture d’écran du prévisionnement puisque c’est un <cite>Overlay</cite>. C’est comme s’il était par-dessus la capture. Pour plus d’informations, consultez la <a class="reference external" href="https://picamera.readthedocs.io/en/release-1.10/api_camera.html#picamera.camera.PiCamera.start_preview">page</a>
+du module PiCamera sur l’aperçu et l’<cite>Overlay</cite>.</p>
+</div>
+<div class="section" id="demarrage-rapide">
+<span id="quickstart"></span><h2>2.1. Démarrage rapide<a class="headerlink" href="#demarrage-rapide" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez téléchargé le dossier au complet, vous remarquerez deux dossiers dans le répertoire principal: <strong>Captures</strong> et <strong>Vidéo</strong>. Ce sont les dossiers dans lesquels
+seront enregistrées vos photos et vidéos prises avec l’application. Si vous souhaitez enregistrer vos captures dans un autre répertoire vous pouvez commencer par ouvrir le
+menu <strong>Fichier</strong> et choisir de nouveaux répertoires. Pour plus d’options, consultez la section <a class="reference internal" href="#save"><span class="std std-ref">Modifier l’endroit de la sauvegarde</span></a>.</p>
+<p>Vous pouvez maintenant prendre des photos en appuyant sur la barre espace ou sur le bouton avec l’icône d’un appareil photo dans le menu <em>Commandes</em> sous l’aperçu.
+Remarquez la barre d’état en bas à droite: elle indique si vous pouvez prendre une photo et ensuite dans quel répertoire la capture est enregistrée.</p>
+<p>Pour prendre des vidéos, appuyez sur le bouton avec l’icône d’un caméscope. Un rond rouge vous indiquera que vous êtes en train de filmer. Pour finir l’enregistrement,
+appuyez à nouveau sur le bouton. La barre d’état vous dira dans quel répertoire la vidéo est enregistrée.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Le format des fichiers vidéo est .h264 par défaut et le programme filme à 24 fps. Si vous voulez lire les vidéos,
+allez dans le répertoire dans lequel se trouve le fichier et exécutez la commande suivante
+dans l’invite de commande:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">omxplayer</span> <span class="o">--</span><span class="n">fps</span> <span class="mi">24</span> <span class="n">file_name</span><span class="o">.</span><span class="n">h264</span>
+</pre></div>
+</div>
+<p class="last">Omxplayer est le lecteur vidéo du Raspberry Pi.</p>
+</div>
+</div>
+<div class="section" id="zoomer">
+<span id="zoom"></span><h2>2.2. Zoomer<a class="headerlink" href="#zoomer" title="Permalink to this headline">¶</a></h2>
+<p>Vous pouvez zoomer dans l’image à l’aide de la glissoire <strong>Zoom</strong>. Après avoir choisi le zoom désiré, vous pouvez vous déplacer avec les deux autres glissoires <strong>X</strong> et <strong>Y</strong>.
+Celles-ci vous feront déplacer horizontalement et verticalement respectivement. Pour la glissoire <strong>X</strong>, une valeur 0 indique que vous vous trouvez complètement à gauche de
+l’image et une valeur de 100, complètement à droite. Pour la glissoire <strong>Y</strong>, 0 indique que vous vous trouvez complètement en haut de
+l’image et une valeur de 100, complètement en bas.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Il y a une sécurité qui limite le zoom maximal dans le code. À un certain point, la caméra zoome sur seulement quelques pixels et cela fait planter l’application.
+Si vous devez absolument zoomer plus que ce que le programme propose, vous pouvez changer la valeur 1.05 à la ligne 780 du fichier <strong>PiCameraGUI.py</strong> dans la fonction
+set_previewScale par 1.00. Cela vous permettera de zoomer jusqu’aux limites de la PiCamera, mais c’est déconseillé. Vous êtes conseillez de remettre ce paramètre à 1.05 par la suite.</p>
+</div>
+<p>Pour réinitialiser le zoom de l’image comme elle était à l’ouverture du programme, appuyez sur le bouton <strong>Réinitialiser</strong> sous la glissoire <strong>Y</strong>.
+Ça fait la même chose que de remettre les
+trois glissoires à 0.</p>
+</div>
+<div class="section" id="parametres-de-l-image">
+<span id="image"></span><h2>2.3. Paramètres de l’image<a class="headerlink" href="#parametres-de-l-image" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="changer-la-resolution">
+<span id="resolution"></span><h2>2.4. Changer la résolution<a class="headerlink" href="#changer-la-resolution" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="afficher-un-texte">
+<span id="text"></span><h2>2.5. Afficher un texte<a class="headerlink" href="#afficher-un-texte" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="modifier-l-endroit-de-la-sauvegarde">
+<span id="save"></span><h2>2.6. Modifier l’endroit de la sauvegarde<a class="headerlink" href="#modifier-l-endroit-de-la-sauvegarde" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="autres-fonctionnalites">
+<span id="other"></span><h2>2.7. Autres fonctionnalités<a class="headerlink" href="#autres-fonctionnalites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Changer le nombre de prise de photo en séquence</li>
+<li>Changer le temps de la capture vidéo</li>
+<li>Revirements et rotation</li>
+<li>Tout réinitialiser</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="code.html" class="btn btn-neutral float-right" title="3. Notes sur le code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="1. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jérémy Talbot-Pâquet.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

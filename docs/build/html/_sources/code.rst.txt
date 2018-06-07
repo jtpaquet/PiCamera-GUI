@@ -47,7 +47,7 @@ Disposition de l'interface
 ==========================
 
 Si vous devez ajouter, modifier ou supprimer des fonctionnalités, vous devrez connaitre la disposition des objets dans la fenêtre.
-Voici l'architecture du logiciel. Les `Frames` agissent comme des fenêtres qui contiennent les boutons et autres widgets. Les canvas servent à contenir les images.
+Voici l'a r c h i t e c t u r e du logiciel. Les `Frames` agissent comme des fenêtres qui contiennent les boutons et autres widgets. Les canvas servent à contenir les images.
 Elles servent donc à l'organisation et à la disposition. Les boutons, `scales`, `entry`, `listbox`, `spinbox` servent à utiliser ou changer une fonctionnalité.
 
 .. image:: layout.png

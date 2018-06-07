@@ -37,7 +37,7 @@ PiCameraGUI.py
 
 Ce fichier contient la classe `PiCameraGUI` qui s'occupe de la création de l'interface ainsi que des fonctionnalités du programme.
 
-.. module:: picamera-gui
+# .. module:: picamera-gui
 .. autoclass:: PiCameraGUI
 
 

@@ -41,10 +41,10 @@ Liens
 
 .. _content:
 
-Welcome to PiCamera GUI's documentation!
-=========================================
+Bienvenue sur la documentation de PiCamera GUI!
+===============================================
 
-Contents:
+Table des matières:
 
 .. toctree::
    :maxdepth: 2
@@ -56,6 +56,7 @@ Contents:
    code
    calltipwindow
    exceptionsmodules
+   bibliography
    rights
 
 

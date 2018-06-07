@@ -16,7 +16,7 @@ En premier lieu, le programme essaie de détecter s'il y a des problèmes d'init
 D'abord, il détecte si Python peut bel et bien initialiser la fenêtre et, ensuite, si il peut initialiser l'objet `PiCamera`_.
 S'il ne peut pas, il lèves deux types d'erreurs et propose des solutions exposées :ref:`exceptionsmodules:ici`.
 
-L'instance `app` de la classe :ref:`gui:PiCameraGUI` est crée avec `win` comme `root` et `camera` comme objet `PiCamera`. Le programme exécute ensuite la ligne::
+L'instance `app` de la classe :ref:`gui` est crée avec `win` comme `root` et `camera` comme objet `PiCamera`. Le programme exécute ensuite la ligne::
 
 	win.mainloop()
 
@@ -37,7 +37,8 @@ PiCameraGUI.py
 
 Ce fichier contient la classe `PiCameraGUI` qui s'occupe de la création de l'interface ainsi que des fonctionnalités du programme.
 
-.. automodule:: PiCameraGUI.PiCameraGUI
+.. currentmodule:: ../../PiCameraGUI
+.. automodule:: PiCameraGUI
 
 
 .. _layout:

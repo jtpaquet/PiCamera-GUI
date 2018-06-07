@@ -59,6 +59,9 @@ Table des matières:
    bibliography
    rights
 
+Interface
+=========
+
 .. image:: _static/gui.png
 	:align: center
 

@@ -28,18 +28,30 @@ VIDEO_DIR = 'Vidéo/'
 
 
 
-# Classe pour l'application de la caméra
-# Fonctionnalités:
-# Aperçu en temps réel
-# Aperçu de la photo prise
-# Prise de photo, vidéo et de photos en séquence
-# Zoom et déplacement à l'intérieur de l'image en temps réel
-# Ajout de texte et du temps présent sur la photo
-# Différents formats de photo supportés
-# Rotation et revirement horizontal et vertical de l'image
-
 class PiCameraGUI(Frame):
+    """
+    Classe pour l'interface graphique de la PiCamera
     
+    Fonctionnalités:
+    Aperçu en temps réel
+    Aperçu de la photo prise
+    Prise de photo, vidéo et de photos en séquence
+    Zoom et déplacement à l'intérieur de l'image en temps réel
+    Ajout de texte et du temps présent sur la photo
+    Différents formats de photo supportés
+    Rotation et revirement horizontal et vertical de l'image
+    
+    Arguments:
+    root: instance de Tk() ou Toplevel() de la librairie tkinter
+    
+    camera: instance de PiCamera() du module picamera
+    
+    title: <string> le titre de la fenêtre
+    
+    voir le fichier main.py pour un exemple d'utilisation
+    """
+        
+        
     # Constructeur
     def __init__(self, root, camera, title):
         

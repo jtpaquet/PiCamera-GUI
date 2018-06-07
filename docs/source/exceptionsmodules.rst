@@ -27,5 +27,10 @@ La création des deux classes sont basées sur le modèle `suivant`_. ::
         	Exception.__init__(self, mismatch)
 
 
+.. currentmodule:: PiCameraGUI
+.. autoclass:: TkinterError
+.. autoclass:: PiCameraError
+
+
 .. _Exception: https://docs.python.org/2/tutorial/errors.html
 .. _suivant: https://docs.python.org/2/tutorial/errors.html#user-defined-exceptions

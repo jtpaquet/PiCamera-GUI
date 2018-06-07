@@ -19,6 +19,8 @@ sys.path.insert(0, os.path.abspath('../../picamera-gui'))
 autodoc_mock_imports = ["tkinter", "fractions"]
 
 
+
+
 # -- Project information -----------------------------------------------------
 
 project = u'PiCameraGUI'

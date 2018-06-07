@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Ce fichier contient deux classes d'exceptions qui héritent de "Exception"
 
 

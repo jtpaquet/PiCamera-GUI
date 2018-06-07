@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # http://www.voidspace.org.uk/python/weblog/arch_d7_2006_07_01.shtml

@@ -33,7 +33,9 @@ class PiCameraGUI(Frame):
     """
     Classe pour l'interface graphique de la PiCamera
     
-    Fonctionnalités:
+    Fonctionnalités
+    ===============
+
     Aperçu en temps réel
     Aperçu de la photo prise
     Prise de photo, vidéo et de photos en séquence
@@ -42,14 +44,19 @@ class PiCameraGUI(Frame):
     Différents formats de photo supportés
     Rotation et revirement horizontal et vertical de l'image
     
-    Arguments:
-    root: instance de Tk() ou Toplevel() de la librairie tkinter
+    Arguments
+    =========
+
+    :param root: Fenêtre principal issue de la librairie ``tkinter``
+    :type  root: Tk() ou Toplevel()
     
-    camera: instance de PiCamera() du module picamera
+    :param camera: Objet caméra issu du module ``picamera``
+    :type  camera: PiCamera()
+
+    :param title: Titre de la fenêtre
+    :type  title: String
     
-    title: <string> le titre de la fenêtre
-    
-    voir le fichier main.py pour un exemple d'utilisation
+    Voir le fichier ``main.py`` pour un exemple d'utilisation
     """
         
         

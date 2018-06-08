@@ -154,8 +154,6 @@ affiché juste au-dessous de la boîte.
 Modification de la sauvegarde
 =============================
 
-* Format
-
 Vous pouvez changer le format du fichier en appuyant sur les flèches de la ``spinbox`` dans la section ``Sauvegarde``. Les formats disponibles sont
 
 	- ``'jpeg'`` - Encodage JPEG
@@ -165,17 +163,11 @@ Vous pouvez changer le format du fichier en appuyant sur les flèches de la ``sp
         - ``'rgb'`` - Données images brutes en format 24-bit RGB
         - ``'rgba'`` - Données images brutes en format 32-bit RGBA
 
-* Nom du fichier
-
 Vous pouvez modifier le nom du fichier de la capture en écrivant dans la boîte ``Nom du fichier``. Notez que le temps est ajouté suite au nom que vous aurez donné au fichier pour 
 empêcher d'enregistrer une capture par-dessus une capture déjà existante. Appuyez sur le bouton ``Confirmer`` pour valider votre choix.
 
-* Changer de répertoire
-
 Si vous souhaitez enregistrer vos captures dans un autre répertoire vous pouvez commencer par ouvrir le 
 menu **Fichier** et choisir un nouveau répertoire. Par défaut, le répertoire pour les photos est ``Capture/`` et celui des vidéos est ``Vidéo/``
-
-* Aperçus
 
 Si vous n'êtes pas sûr de l'endroit de la sauvegarde ou du nom de fichier, vous pouvez voir un aperçu sous le bouton ``Confirmer``
 

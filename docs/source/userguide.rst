@@ -158,12 +158,12 @@ Modification de la sauvegarde
 
 Vous pouvez changer le format du fichier en appuyant sur les flèches de la ``spinbox`` dans la section ``Sauvegarde``. Les formats disponibles sont
 
-	* ``'jpeg'`` - Write a JPEG file
-	* ``'png'`` - Write a PNG file
-        * ``'gif'`` - Write a GIF file
-        * ``'bmp'`` - Write a Windows bitmap file
-        * ``'rgb'`` - Write the raw image data to a file in 24-bit RGB format
-        * ``'rgba'`` - Write the raw image data to a file in 32-bit RGBA format
+	- ``'jpeg'`` - Encodage JPEG
+	- ``'png'`` - Encodage PNG sans pertes
+        - ``'gif'`` - Encodage GIF
+        - ``'bmp'`` - Encodage Windows bitmap
+        - ``'rgb'`` - Données images brutes en format 24-bit RGB
+        - ``'rgba'`` - Données images brutes en format 32-bit RGBA
 
 * Nom du fichier
 

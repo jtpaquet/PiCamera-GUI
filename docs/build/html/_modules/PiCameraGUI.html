@@ -181,31 +181,41 @@
 
 <div class="viewcode-block" id="PiCameraGUI"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI">[docs]</a><span class="k">class</span> <span class="nc">PiCameraGUI</span><span class="p">(</span><span class="n">Frame</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Classe pour l&#39;interface graphique de la PiCamera</span>
+<span class="sd">    Classe pour l&#39;interface graphique de la ``PiCamera``</span>
 <span class="sd">    </span>
-<span class="sd">    Fonctionnalités:</span>
-<span class="sd">    Aperçu en temps réel</span>
-<span class="sd">    Aperçu de la photo prise</span>
-<span class="sd">    Prise de photo, vidéo et de photos en séquence</span>
-<span class="sd">    Zoom et déplacement à l&#39;intérieur de l&#39;image en temps réel</span>
-<span class="sd">    Ajout de texte et du temps présent sur la photo</span>
-<span class="sd">    Différents formats de photo supportés</span>
-<span class="sd">    Rotation et revirement horizontal et vertical de l&#39;image</span>
+<span class="sd">    **Fonctionnalités**</span>
 <span class="sd">    </span>
-<span class="sd">    Arguments:</span>
-<span class="sd">    root: instance de Tk() ou Toplevel() de la librairie tkinter</span>
+
+<span class="sd">    * Aperçu en temps réel</span>
+<span class="sd">    * Aperçu de la photo prise</span>
+<span class="sd">    * Prise de photo, vidéo et de photos en séquence</span>
+<span class="sd">    * Zoom et déplacement à l&#39;intérieur de l&#39;image en temps réel</span>
+<span class="sd">    * Ajout de texte et du temps présent sur la photo</span>
+<span class="sd">    * Différents formats de photo supportés</span>
+<span class="sd">    * Rotation et revirement horizontal et vertical de l&#39;image</span>
 <span class="sd">    </span>
-<span class="sd">    camera: instance de PiCamera() du module picamera</span>
+
+<span class="sd">    :param root: Fenêtre principal issue de la librairie ``tkinter``</span>
+<span class="sd">    :type  root: Tk() ou Toplevel()</span>
 <span class="sd">    </span>
-<span class="sd">    title: &lt;string&gt; le titre de la fenêtre</span>
+<span class="sd">    :param camera: Objet caméra issu du module ``picamera``</span>
+<span class="sd">    :type  camera: PiCamera()</span>
+
+<span class="sd">    :param title: Titre de la fenêtre</span>
+<span class="sd">    :type  title: String</span>
 <span class="sd">    </span>
-<span class="sd">    voir le fichier main.py pour un exemple d&#39;utilisation</span>
+<span class="sd">    Voir le fichier ``main.py`` pour un exemple d&#39;utilisation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
         
         
     <span class="c1"># Constructeur</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">camera</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
-        
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Initialise la fenêtre, les paramètres de la caméra, les sous-fenêtres et widgets, l&#39;aperçu, </span>
+<span class="sd">	la gestion des événements et les autres attributs utiles au fonctionnement de l&#39;application</span>
+<span class="sd">        </span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="c1"># Initialisation de la fenêtre</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mainFrame</span> <span class="o">=</span> <span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
@@ -250,19 +260,28 @@
         
         
     <span class="c1"># Destructeur</span>
-    <span class="c1"># S&#39;assure d&#39;effacer l&#39;instance de la camera pour éviter des problèmes de mémoire</span>
     <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	S&#39;assure d&#39;effacer l&#39;instance de ``PiCamera`` pour éviter des problèmes de mémoire</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">stop_preview</span><span class="p">()</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span>
 
 
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Cette section contient tout ce qui rapporte à la création de l&#39;interface, c&#39;est-à-dire</span>
+<span class="sd">	Les fenêtres, les sous-fenêtres d&#39;options, les sous-fenêtres d&#39;aperçu et la barre de menu</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
 
-    <span class="c1"># Cette section contient tout ce qui rapporte à la création de l&#39;interface, c&#39;est-à-dire</span>
-    <span class="c1"># Les fenêtres, les sous-fenêtres d&#39;options, les sous-fenêtres d&#39;aperçu et la barre de menu</span>
 
+<div class="viewcode-block" id="PiCameraGUI.createFrames"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createFrames">[docs]</a>    <span class="k">def</span> <span class="nf">createFrames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée les sous-fenêtres</span>
 
-    <span class="c1"># Crée les sous-fenêtres</span>
-    <span class="k">def</span> <span class="nf">createFrames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Crée la sous-fenêtre virtuelle de la section des aperçus</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sectionFrame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
@@ -305,11 +324,15 @@
         <span class="c1"># Crée la sous-fenêtre de l&#39;état de la capture</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">etatFrame</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">commandesFrame</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;État&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="n">bsize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">bsize</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bd</span><span class="o">=</span><span class="n">BD</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">etatFrame</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;e&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">etatFrame</span><span class="o">.</span><span class="n">grid_propagate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etatFrame</span><span class="o">.</span><span class="n">grid_propagate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
 
-    <span class="c1"># Crée les sous-fenêtres des options</span>
-    <span class="k">def</span> <span class="nf">createLabelFrames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createLabelFrames"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createLabelFrames">[docs]</a>    <span class="k">def</span> <span class="nf">createLabelFrames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée les sous-fenêtres des options</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="c1"># Division des fenêtres</span>
         <span class="n">div</span> <span class="o">=</span> <span class="mf">1.75</span>
         
@@ -335,11 +358,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optionsFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Sauvegarde&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">SIZE_OPTIONS</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IMAGE_HEIGHT</span><span class="o">/</span><span class="n">div</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="n">BD</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="o">.</span><span class="n">grid_propagate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">createSave</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">createSave</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Crée la barre de menu</span>
-    <span class="k">def</span> <span class="nf">createMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createMenu"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createMenu">[docs]</a>    <span class="k">def</span> <span class="nf">createMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée la barre de menu</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Crée un menu virtuel</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">menubar</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -372,11 +398,14 @@
         <span class="n">menuAide</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;À propos&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">createAide</span><span class="p">)</span>
         
         <span class="c1"># Affiche le menu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">menubar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">menubar</span><span class="p">)</span></div>
         
         
-    <span class="c1"># Crée la sous-fenêtre &quot;Image&quot; et initialise les widgets de celle-ci</span>
-    <span class="k">def</span> <span class="nf">createImage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createImage"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createImage">[docs]</a>    <span class="k">def</span> <span class="nf">createImage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée la sous-fenêtre ``Image`` et initialise les widgets de celle-ci</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Crée l&#39;emplacement de la glissoire de zoom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">zoom_Frame</span><span class="o">=</span><span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image_Frame</span><span class="p">)</span>
@@ -449,13 +478,15 @@
         
         <span class="c1"># Crée le tooltip qui s&#39;affichera au dessus du texte &quot;Modes d&#39;exposition&quot;</span>
         <span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Activer un mode d&#39;exposition</span><span class="se">\n</span><span class="s2">empêche la configuration manuelle</span><span class="se">\n</span><span class="s2">de l&#39;iso et du shutter speed&quot;</span>
-        <span class="n">createToolTip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeLabel</span><span class="p">,</span> <span class="n">note</span><span class="p">)</span>
-<span class="c1">##        Label(self.image_Frame, text=&quot;Activer un mode d&#39;exposition empêche la configuration manuelle de l&#39;iso et du shutter speed&quot;).grid(row=6,column=3,sticky=&#39;w&#39;)</span>
+        <span class="n">createToolTip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modeLabel</span><span class="p">,</span> <span class="n">note</span><span class="p">)</span></div>
+        
+        
+<div class="viewcode-block" id="PiCameraGUI.createRes"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createRes">[docs]</a>    <span class="k">def</span> <span class="nf">createRes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée la sous-fenêtre ``Résolution`` et initialise les widgets de celle-ci</span>
 
-        
-        
-    <span class="c1"># Crée la sous-fenêtre &quot;Résolution&quot; et initialise les widgets de celle-ci</span>
-    <span class="k">def</span> <span class="nf">createRes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">resdefFrame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resFrame</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resdefFrame</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
         
@@ -516,11 +547,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">resactuelleLabel</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resactuelleFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Résolution actuelle: </span><span class="si">{}</span><span class="s2">x</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resactuelleLabel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">champLabel</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resactuelleFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Champ de vision: Partiel&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">champLabel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">champLabel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span></div>
         
         
-    <span class="c1"># Crée la sous-fenêtre &quot;Texte&quot; et initialise les widgets de celle-ci</span>
-    <span class="k">def</span> <span class="nf">createText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createText"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createText">[docs]</a>    <span class="k">def</span> <span class="nf">createText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée la sous-fenêtre ``Texte`` et initialise les widgets de celle-ci</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">annoterTemps</span> <span class="o">=</span> <span class="n">BooleanVar</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Annoter le temps (Bool)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textVar</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Texte personnalisé (String)</span>
         
@@ -553,11 +587,14 @@
         
         <span class="c1"># Crée un tooltip relié au label &quot;Personnalisé&quot;</span>
         <span class="n">note</span><span class="o">=</span><span class="s2">&quot;N&#39;accepte pas les caractères spéciaux&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;(code ASCII inférieur à 128)&quot;</span>
-        <span class="n">createToolTip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textEntry</span><span class="p">,</span> <span class="n">note</span><span class="p">)</span>
+        <span class="n">createToolTip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textEntry</span><span class="p">,</span> <span class="n">note</span><span class="p">)</span></div>
         
 
-    <span class="c1"># Crée la sous-fenêtre &quot;Sauvegarder&quot; et initialise les widgets de celle-ci</span>
-    <span class="k">def</span> <span class="nf">createSave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createSave"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createSave">[docs]</a>    <span class="k">def</span> <span class="nf">createSave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée la sous-fenêtre ``Sauvegarder`` et initialise les widgets de celle-ci</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fichierVar</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>  <span class="c1"># Nom du fichier (String)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">fichierFrame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="p">)</span>
@@ -577,9 +614,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fichierEntry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fichierFrame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fichierVar</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fichierEntry</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Confirmer&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1">##        Label(self.saveFrame, text=&#39;&#39;).grid(row=2,sticky=&#39;w&#39;)</span>
-
-<span class="c1">##        Label(self.saveFrame, text=&quot;Le format des fichiers vidéo\nest .h264 ar défaut.&quot;,justify=&#39;left&#39;).grid(row=3,sticky=&#39;w&#39;)</span>
 
         <span class="c1"># Aperçu du nom de fichier photo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apercuFichierphoto</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Fichier photo: capture.png&quot;</span><span class="p">)</span>
@@ -597,10 +631,14 @@
         
         <span class="c1"># Aperçu du répertoire vidéo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirevideo</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveFrame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Répertoire vidéo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">video_dir</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirevideo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirevideo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span></div>
 
-    <span class="c1"># Crée une fenêtre indiquant les informations relatives au logiciel </span>
-    <span class="k">def</span> <span class="nf">createAide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PiCameraGUI.createAide"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createAide">[docs]</a>    <span class="k">def</span> <span class="nf">createAide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée une fenêtre indiquant les informations relatives au logiciel </span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aide</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;À propos&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aideFrame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="p">)</span>
@@ -609,12 +647,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">centrerAide</span><span class="p">()</span>
 
 
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Cette section contient les commandes des widgets et la fonction qui initialise les boutons de commande</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span></div>
 
-    <span class="c1"># Cette section contient les commandes des widgets et la fonction qui initialise les boutons de commande</span>
 
-
-    <span class="c1"># Crée les boutons de l&#39;interface des commandes et la barre de menu</span>
-    <span class="k">def</span> <span class="nf">createWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createWidgets"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createWidgets">[docs]</a>    <span class="k">def</span> <span class="nf">createWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée les boutons de l&#39;interface des commandes et la barre de menu</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="c1"># Crée le bouton capture</span>
         <span class="c1"># Ajuste la taille de l&#39;image du bouton capture</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cameraPNG</span><span class="o">=</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">ASSETS_DIR</span><span class="o">+</span><span class="s2">&quot;camera.png&quot;</span><span class="p">)</span>
@@ -702,36 +745,54 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">waitPNG</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">waitPNG</span><span class="o">.</span><span class="n">subsample</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
         
         <span class="c1"># Crée le menu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">createMenu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">createMenu</span><span class="p">()</span></div>
 
 
-    <span class="c1"># Effectue le revirement horizontal de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">hflip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.hflip"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.hflip">[docs]</a>    <span class="k">def</span> <span class="nf">hflip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Effectue le revirement horizontal de l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">hflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hflip</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">hflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">hflip</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">hflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">hflip</span></div>
         
         
-    <span class="c1"># Effectue le revirement vertical de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">vflip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.vflip"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.vflip">[docs]</a>    <span class="k">def</span> <span class="nf">vflip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Effectue le revirement vertical de l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">vflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">vflip</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">vflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">vflip</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">vflip</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">vflip</span></div>
         
 
-    <span class="c1"># Effectue la rotation de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.rotate"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.rotate">[docs]</a>    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Effectue la rotation de l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">+=</span> <span class="mi">90</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">==</span> <span class="mi">360</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span></div>
         
         
-    <span class="c1"># Prends une photo avec la barre espace</span>
-    <span class="k">def</span> <span class="nf">captureSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">capture</span><span class="p">()</span>
+<div class="viewcode-block" id="PiCameraGUI.captureSpace"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.captureSpace">[docs]</a>    <span class="k">def</span> <span class="nf">captureSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Prends une photo avec la barre espace</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capture</span><span class="p">()</span></div>
         
 
-    <span class="c1"># Prends une photo</span>
-    <span class="k">def</span> <span class="nf">capture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.capture"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.capture">[docs]</a>    <span class="k">def</span> <span class="nf">capture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Prends une photo</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Affiche une image d&#39;attente dnas le canvas prévu à cet endroit</span>
         <span class="n">imWait</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">etatCanvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">waitPNG</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="o">+</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
@@ -754,11 +815,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_etatVid</span><span class="p">)</span>
         
         <span class="c1"># Actualise l&#39;aperçu de la photo prise</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Prends une séquence de photos</span>
-    <span class="k">def</span> <span class="nf">captureSeq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.captureSeq"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.captureSeq">[docs]</a>    <span class="k">def</span> <span class="nf">captureSeq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Prends une séquence de photos</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Affiche une image d&#39;attente dans le canvas prévu à cet endroit</span>
         <span class="n">imWait</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">etatCanvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">waitPNG</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="o">+</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
@@ -783,12 +847,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">etatCapture</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Prêt à la capture&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_etatVid</span><span class="p">)</span>
         <span class="c1"># Actualise l&#39;aperçu de la photo prise</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Prends un enregistrement vidéo</span>
-    <span class="c1"># Appelé chaque fois que le bouton vidéo est appuyé</span>
-    <span class="k">def</span> <span class="nf">recVideo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.recVideo"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.recVideo">[docs]</a>    <span class="k">def</span> <span class="nf">recVideo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Prends un enregistrement vidéo</span>
+<span class="sd">	Appelé chaque fois que le bouton vidéo est appuyé</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="c1"># Si l&#39;enregistrement est en cours</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recording</span><span class="p">:</span>
             <span class="c1"># Arrête l&#39;enregistrement</span>
@@ -821,11 +888,15 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">update_etatVid</span><span class="p">()</span>
             
         <span class="c1"># Change l&#39;état</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">recording</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">recording</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recording</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">recording</span></div>
         
         
     <span class="c1"># Crée les liaisons entre les widgets et les événements</span>
-    <span class="k">def</span> <span class="nf">createBindings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.createBindings"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.createBindings">[docs]</a>    <span class="k">def</span> <span class="nf">createBindings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Crée les liaisons entre les widgets et les événements</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="c1"># Lorsque la fenêtre principale bouge, la position de l&#39;aperçu en temps réel s&#39;adaptera</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Configure&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_previewPos</span><span class="p">)</span>
         <span class="c1"># Prends une photo en appuyant sur la barre espace</span>
@@ -839,11 +910,14 @@
         <span class="c1"># Ajuste l&#39;ISO lorsque l&#39;utilisateur clique sur les glissoires</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shutterScale</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;B1-Motion&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_shutter</span><span class="p">)</span>
         <span class="c1"># Enlève la sélection de la boîte des résolutions par défaut lorsque l&#39;utilisateur clique en dehors de celle-ci</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">resListbox</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;FocusOut&gt;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">resListbox</span><span class="o">.</span><span class="n">selection_clear</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resListbox</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;FocusOut&gt;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">resListbox</span><span class="o">.</span><span class="n">selection_clear</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">))</span></div>
 
 
-    <span class="c1"># Effectue la réinitialisation de la taille de l&#39;aperçu</span>
-    <span class="k">def</span> <span class="nf">reset_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.reset_size"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.reset_size">[docs]</a>    <span class="k">def</span> <span class="nf">reset_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Effectue la réinitialisation de la taille de l&#39;aperçu</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">zoomScale</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xzoomScale</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yzoomScale</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -854,11 +928,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">expListbox</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_shutter</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># event=None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_iso</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># event=None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_expmode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_expmode</span><span class="p">()</span></div>
         
 
-    <span class="c1"># Réinitialise tous les paramètres</span>
-    <span class="k">def</span> <span class="nf">reset_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.reset_all"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.reset_all">[docs]</a>    <span class="k">def</span> <span class="nf">reset_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Réinitialise tous les paramètres</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_size</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hflip</span> <span class="o">=</span> <span class="kc">False</span>
@@ -884,26 +962,33 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">seqSpinbox</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">&quot;buttondown&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dernierFichier</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_capture</span><span class="p">()</span></div>
 
-        
+       
+<div class="viewcode-block" id="PiCameraGUI.quit"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Quitte le programme</span>
 
-
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="c1"># Appelle le destructeur de la classe pour éviter des fuites de mémoire</span>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__del__</span><span class="p">()</span>
         <span class="c1"># Quitte le programme</span>
-        <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="c1"># Appelle le destructeur de la classe pour éviter des fuites de mémoire</span>
-            <span class="bp">self</span><span class="o">.</span><span class="fm">__del__</span><span class="p">()</span>
-            <span class="c1"># Quitte le programme</span>
-            <span class="n">exit</span><span class="p">()</span>
+        <span class="n">exit</span><span class="p">()</span></div>
             
             
-            
-    <span class="c1"># Cette section contient les fonctions qui fixent des variables aux attributs de la classe Application</span>
-    <span class="c1"># et qui exécute la fonction propre à cette variable</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cette section contient les fonctions qui fixent des variables aux attributs de la classe Application</span>
+<span class="sd">    et qui exécute la fonction propre à cette variable</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 
-    <span class="c1"># Ajuste la position de l&#39;aperçu à la fenêtre</span>
-    <span class="k">def</span> <span class="nf">set_previewPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.set_previewPos"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_previewPos">[docs]</a>    <span class="k">def</span> <span class="nf">set_previewPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Ajuste la position de l&#39;aperçu à la fenêtre</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="c1"># Actualise les tâches passives (e.g. position des fenêtres). Utilisé pour la configuration de la géométrie de la fenêtre</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
         
@@ -913,22 +998,28 @@
         <span class="c1"># Fixe la position de l&#39;aperçu en temps réel avec un tuple de la forme (x, y, width, height)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">winPreview</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos_preview</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_preview</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                            <span class="bp">self</span><span class="o">.</span><span class="n">resPreview</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">resPreview</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">winPreview</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">winPreview</span></div>
         
         
-    <span class="c1"># Fixe le texte à afficher sur l&#39;image</span>
-    <span class="k">def</span> <span class="nf">set_overlayText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.set_overlayText"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_overlayText">[docs]</a>    <span class="k">def</span> <span class="nf">set_overlayText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe le texte à afficher sur l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">annoterTemps</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
             <span class="c1"># Affiche le temps sur une première ligne et le texte personnalisé sur la deuxième</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">annotate_text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte</span><span class="p">)</span>
             
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Affiche le texte personnalise seulement</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">annotate_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">annotate_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte</span></div>
                     
 
-    <span class="c1"># Fixe l&#39;échelle de l&#39;aperçu</span>
-    <span class="k">def</span> <span class="nf">set_previewScale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.set_previewScale"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_previewScale">[docs]</a>    <span class="k">def</span> <span class="nf">set_previewScale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe l&#39;échelle de l&#39;aperçu</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="c1"># Amène l&#39;échelle du zoom en pourcentage</span>
         <span class="c1"># xscale et yscale correspondent à des étirements unidimensionnels en x et y respectivement,</span>
         <span class="c1"># d&#39;où la multiplication par zscale pour obtenir la position</span>
@@ -939,11 +1030,14 @@
         <span class="c1"># x,y : pourcentage de la position en x,y (gauche/haut = 0.0, droite/bas = 1.0)</span>
         <span class="c1"># w,h : pourcentage de la largeur/hauteur de l&#39;image à afficher</span>
         <span class="c1"># avec une sécurité de 0.05 pour éviter des problèmes de mémoire</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="p">(</span><span class="n">xscale</span><span class="o">*</span><span class="n">zscale</span><span class="p">,</span> <span class="n">yscale</span><span class="o">*</span><span class="n">zscale</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">-</span><span class="n">zscale</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">-</span><span class="n">zscale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="p">(</span><span class="n">xscale</span><span class="o">*</span><span class="n">zscale</span><span class="p">,</span> <span class="n">yscale</span><span class="o">*</span><span class="n">zscale</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">-</span><span class="n">zscale</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">-</span><span class="n">zscale</span><span class="p">)</span></div>
         
         
-    <span class="c1"># Vérifie et fixe la résoltuion personnalisée</span>
-    <span class="k">def</span> <span class="nf">set_res</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.set_res"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_res">[docs]</a>    <span class="k">def</span> <span class="nf">set_res</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Vérifie et fixe la résolution personnalisée</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         
         <span class="c1"># Ouvre une boîte de dialogue et soulève une exception si aucune donnée n&#39;est entrée dans une des deux boîtes d&#39;entrée</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">resPersoW</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">resPersoH</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
@@ -982,11 +1076,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">champ</span> <span class="o">=</span> <span class="s2">&quot;Complet&quot;</span>
         
         <span class="c1"># Actualise l&#39;aperçu de la résolution</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_resactuelle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_resactuelle</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Fixe la résoltuion parmi les modes par défaut</span>
-    <span class="k">def</span> <span class="nf">set_resdef</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.set_resdef"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_resdef">[docs]</a>    <span class="k">def</span> <span class="nf">set_resdef</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe la résolution parmi les modes par défaut</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resListbox</span><span class="o">.</span><span class="n">curselection</span><span class="p">()</span>  <span class="c1"># Indice de l&#39;élément sélectionné de la boîte des résolutions par défaut</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_res</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>  <span class="c1"># Élément sélectionné de la boîte des résolutions par défaut</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -997,45 +1095,64 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">sensor_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cameramode</span>
         
         <span class="c1"># Actualise l&#39;aperçu de la résolution</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_resactuelle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_resactuelle</span><span class="p">()</span></div>
+        
+
+<div class="viewcode-block" id="PiCameraGUI.set_sequence"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">set_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe le nombre de photos à prendre en séquence</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbseq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seqSpinbox</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Fixe le nombre de photos à prendre en séquence</span>
-    <span class="k">def</span> <span class="nf">set_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nbseq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seqSpinbox</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<div class="viewcode-block" id="PiCameraGUI.set_iso"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_iso">[docs]</a>    <span class="k">def</span> <span class="nf">set_iso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe l&#39;``ISO`` de l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">iso</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isoScale</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></div>
         
         
-    <span class="c1"># Fixe l&#39;iso de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">set_iso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">iso</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isoScale</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        
-        
-    <span class="c1"># Fixe le shutter speed de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">set_shutter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">shutter_speed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shutterScale</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+<div class="viewcode-block" id="PiCameraGUI.set_shutter"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_shutter">[docs]</a>    <span class="k">def</span> <span class="nf">set_shutter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe le ``shutter speed`` de l&#39;image</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">shutter_speed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shutterScale</span><span class="o">.</span><span class="n">get</span><span class="p">())</span></div>
         
     
-    <span class="c1"># Fixe le shutter speed de l&#39;image</span>
-    <span class="k">def</span> <span class="nf">set_expmode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">exposure_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expListbox</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="PiCameraGUI.set_expmode"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.set_expmode">[docs]</a>    <span class="k">def</span> <span class="nf">set_expmode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fixe le ``mode d&#39;exposition`` de l&#39;image</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">exposure_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expListbox</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">)</span></div>
 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cette section contient les fonctions qui actualisent les aperçus</span>
+<span class="sd">	</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Cette section contient les fonctions qui actualisent les aperçus</span>
-
-
-    <span class="c1"># Actualise l&#39;affichage du temps</span>
-    <span class="c1"># Actualise l</span>
-    <span class="k">def</span> <span class="nf">update_temps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.update_temps"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.update_temps">[docs]</a>    <span class="k">def</span> <span class="nf">update_temps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Actualise l&#39;affichage du temps</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temps</span> <span class="o">=</span> <span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H:%M:%S&quot;</span> <span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tempsLabel</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">temps</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_text</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_temps</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">()</span></div>
 
         
-    <span class="c1"># Actualise le nom du fichier</span>
-    <span class="k">def</span> <span class="nf">update_nomFichier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.update_nomFichier"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.update_nomFichier">[docs]</a>    <span class="k">def</span> <span class="nf">update_nomFichier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Actualise le nom du fichier</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fichierVar</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nomFichier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fichierVar</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">temps</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1046,17 +1163,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">apercuFichierphoto</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Fichier photo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nomFichier</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apercuFichiervideo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Fichier vidéo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nomFichier</span> <span class="o">+</span> <span class="s2">&quot;.h264&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirephoto</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Répertoire photo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">photo_dir</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirevideo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Répertoire vidéo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">video_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apercuRepertoirevideo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Répertoire vidéo: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">video_dir</span><span class="p">)</span></div>
         
         
-    <span class="c1"># Actualise l&#39;état de l&#39;enregistrement vidéo</span>
-    <span class="k">def</span> <span class="nf">update_etatVid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.update_etatVid"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.update_etatVid">[docs]</a>    <span class="k">def</span> <span class="nf">update_etatVid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Actualise l&#39;état de l&#39;enregistrement vidéo</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">etatCaptureLabel</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">etatCapture</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">etatCaptureLabel2</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">etatCapture</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etatCaptureLabel2</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">etatCapture</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
         
         
-    <span class="c1"># Actualise l&#39;image de la dernière capture</span>
-    <span class="k">def</span> <span class="nf">update_capture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.update_capture"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.update_capture">[docs]</a>    <span class="k">def</span> <span class="nf">update_capture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Actualise l&#39;image de la dernière capture</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dernierFichier</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="c1"># Affiche l&#39;image par défaut</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">captureCanvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">imagedefaut</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;nw&#39;</span><span class="p">)</span>
@@ -1068,21 +1191,28 @@
             <span class="n">frac</span><span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">scale_h</span><span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">frac</span><span class="o">.</span><span class="n">numerator</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="o">.</span><span class="n">subsample</span><span class="p">(</span><span class="n">frac</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">imCapture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">captureCanvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;nw&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imCapture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">captureCanvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">previewCapture</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;nw&#39;</span><span class="p">)</span></div>
             
             
-    <span class="c1"># Actualise l&#39;affichage de la résolution et du champ de vision actuel</span>
-    <span class="k">def</span> <span class="nf">update_resactuelle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.update_resactuelle"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.update_resactuelle">[docs]</a>    <span class="k">def</span> <span class="nf">update_resactuelle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Actualise l&#39;affichage de la résolution et du champ de vision actuel</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resactuelleLabel</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Résolution actuelle: </span><span class="si">{}</span><span class="s2">x</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">champLabel</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Champ de vision: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">champ</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">champLabel</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Champ de vision: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">champ</span><span class="p">))</span></div>
         
 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cette section contient des fonctions de vérification et de géométrie</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Cette section contient des fonctions de vérification et de géométrie</span>
-
-
-    <span class="c1"># Vérifie si la résolution en largeur entrée par l&#39;utilisateur est d&#39;un format adéquat (int)</span>
-    <span class="k">def</span> <span class="nf">verify_resW</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.verify_resW"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.verify_resW">[docs]</a>    <span class="k">def</span> <span class="nf">verify_resW</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Vérifie si la résolution en largeur entrée par l&#39;utilisateur est d&#39;un format adéquat ``int``</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">resPersoW</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span>
@@ -1091,11 +1221,14 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="c1"># Ouvre une boîte de dialogue et soulève une exception</span>
             <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Erreur&quot;</span><span class="p">,</span> <span class="s2">&quot;Entrez un nombre entier&quot;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;La résolution devrait être composée de deux entiers&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;La résolution devrait être composée de deux entiers&quot;</span><span class="p">)</span></div>
 
 
-    <span class="c1"># Vérifie si la résolution en hauteur entrée par l&#39;utilisateur est d&#39;un format adéquat (int)</span>
-    <span class="k">def</span> <span class="nf">verify_resH</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.verify_resH"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.verify_resH">[docs]</a>    <span class="k">def</span> <span class="nf">verify_resH</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Vérifie si la résolution en hauteur entrée par l&#39;utilisateur est d&#39;un format adéquat ``int``</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">resPersoH</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span>
@@ -1104,30 +1237,42 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="c1"># Ouvre une boîte de dialogue et soulève une exception</span>
             <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Erreur résolution&quot;</span><span class="p">,</span> <span class="s2">&quot;Entrez un nombre entier&quot;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;La résolution devrait être composée de deux entiers&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;La résolution devrait être composée de deux entiers&quot;</span><span class="p">)</span></div>
         
         
-    <span class="c1"># Vérifie et formatte les caractères invalides du texte personnalisé</span>
-    <span class="c1"># La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII</span>
-    <span class="c1"># Remplace les caractères invalides par &quot;%&quot;</span>
-    <span class="k">def</span> <span class="nf">verify_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.verify_text"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.verify_text">[docs]</a>    <span class="k">def</span> <span class="nf">verify_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Vérifie et formatte les caractères invalides du texte personnalisé</span>
+
+<span class="sd">	La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII</span>
+
+<span class="sd">	Remplace les caractères invalides par ``%``</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">texte</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">textVar</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texte</span><span class="p">)):</span>
             <span class="k">if</span> <span class="nb">ord</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texte</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">128</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">texte</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texte</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_overlayText</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_overlayText</span><span class="p">()</span></div>
 
 
-    <span class="c1"># Retourne la taille des sections &quot;Séquence&quot; et &quot;État&quot;</span>
-    <span class="k">def</span> <span class="nf">get_cmdsize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PiCameraGUI.get_cmdsize"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.get_cmdsize">[docs]</a>    <span class="k">def</span> <span class="nf">get_cmdsize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Retourne la taille des sectoins ``Séquence`` et ``État``</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
         <span class="n">w1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">captureFrame</span><span class="o">.</span><span class="n">winfo_reqwidth</span><span class="p">()</span><span class="o">-</span><span class="mi">10</span>
         <span class="n">w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">commandesFrame</span><span class="o">.</span><span class="n">winfo_reqwidth</span><span class="p">()</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">w1</span> <span class="o">-</span> <span class="n">w2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">commandesFrame</span><span class="o">.</span><span class="n">winfo_reqheight</span><span class="p">()</span><span class="o">+</span><span class="mi">7</span><span class="o">*</span><span class="n">BD</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">w1</span> <span class="o">-</span> <span class="n">w2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">commandesFrame</span><span class="o">.</span><span class="n">winfo_reqheight</span><span class="p">()</span><span class="o">+</span><span class="mi">7</span><span class="o">*</span><span class="n">BD</span><span class="p">)</span></div>
 
 
-    <span class="c1"># Trouve la position de l&#39;aperçu en temps réel dans l&#39;interface</span>
-    <span class="k">def</span> <span class="nf">posPreview</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.posPreview"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.posPreview">[docs]</a>    <span class="k">def</span> <span class="nf">posPreview</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Trouve la position de l&#39;aperçu en temps réel dans l&#39;interface</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
         <span class="c1"># Calcule la position du coin supérieur gauche</span>
         <span class="n">wf</span><span class="p">,</span> <span class="n">hf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">previewFrame</span><span class="o">.</span><span class="n">winfo_width</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">previewFrame</span><span class="o">.</span><span class="n">winfo_height</span><span class="p">()</span>
@@ -1137,33 +1282,47 @@
                    <span class="bp">self</span><span class="o">.</span><span class="n">previewFrame</span><span class="o">.</span><span class="n">winfo_x</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">winfo_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">x</span><span class="p">),</span>
                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sectionFrame</span><span class="o">.</span><span class="n">winfo_y</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageFrame</span><span class="o">.</span><span class="n">winfo_y</span><span class="p">()</span> <span class="o">+</span>
                    <span class="bp">self</span><span class="o">.</span><span class="n">previewFrame</span><span class="o">.</span><span class="n">winfo_y</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">winfo_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">y</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">pos</span>
+        <span class="k">return</span> <span class="n">pos</span></div>
 
 
-    <span class="c1"># Place la fenêtre d&#39;aide au centre de l&#39;écran</span>
-    <span class="k">def</span> <span class="nf">centrerAide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.centrerAide"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.centrerAide">[docs]</a>    <span class="k">def</span> <span class="nf">centrerAide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Place la fenêtre d&#39;aide au centre de l&#39;écran</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">winfo_width</span><span class="p">()</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">winfo_height</span><span class="p">()</span>
         <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
         <span class="c1"># Ajuste l&#39;emplacement et la taille selon les paramètres calculés</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">x</span><span class="si">{}</span><span class="s1">+</span><span class="si">{}</span><span class="s1">+</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aide</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">x</span><span class="si">{}</span><span class="s1">+</span><span class="si">{}</span><span class="s1">+</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span></div>
         
     
-    <span class="c1"># Change le répertoire d&#39;enregistrement d&#39;un fichier photo</span>
-    <span class="c1"># Ouvre une nouvelle fenêtre</span>
-    <span class="c1"># self.photo_dir: str</span>
-    <span class="k">def</span> <span class="nf">changerRepertoirePhoto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PiCameraGUI.changerRepertoirePhoto"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.changerRepertoirePhoto">[docs]</a>    <span class="k">def</span> <span class="nf">changerRepertoirePhoto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Change le répertoire d&#39;enregistrement d&#39;un fichier photo</span>
+
+<span class="sd">	Ouvre une nouvelle fenêtre</span>
+
+<span class="sd">	self.photo_dir: str</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">photo_dir</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Choisir un répertoire photo&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">()</span>
-    
-    
-    <span class="c1"># Change le répertoire d&#39;enregistrement d&#39;un fichier vidéo</span>
-    <span class="c1"># Ouvre une nouvelle fenêtre</span>
-    <span class="k">def</span> <span class="nf">changerRepertoireVideo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">video_dir</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Choisir un répertoire vidéo&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">()</span></div>
+    
+    
+<div class="viewcode-block" id="PiCameraGUI.changerRepertoireVideo"><a class="viewcode-back" href="../code.html#PiCameraGUI.PiCameraGUI.changerRepertoireVideo">[docs]</a>    <span class="k">def</span> <span class="nf">changerRepertoireVideo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Change le répertoire d&#39;enregistrement d&#39;un fichier vidéo</span>
+
+<span class="sd">	Ouvre une nouvelle fenêtre</span>
+
+<span class="sd">	self.video_dir: str</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">video_dir</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Choisir un répertoire vidéo&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_nomFichier</span><span class="p">()</span></div></div>
 
 
 

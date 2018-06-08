@@ -38,4 +38,4 @@ Vous trouverez ici toutes les documentations utilisées pour créer le logiciel.
 
 .. [#App2] Autre application `<http://idlelogiclabs.com/2016/10/10/raspberry-pi-3-camera-windowed-preview/>`_
 
-.. [#Exp1] Exposition `https://photographylife.com/iso-shutter-speed-and-aperture-for-beginners/>`_
+.. [#Exp1] Exposition `<https://photographylife.com/iso-shutter-speed-and-aperture-for-beginners/>`_

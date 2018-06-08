@@ -39,6 +39,7 @@ Ce fichier contient la classe ``PiCameraGUI`` qui s'occupe de la création de l'
 
 .. currentmodule:: PiCameraGUI
 .. autoclass:: PiCameraGUI
+     :members:
 
 
 .. _layout:

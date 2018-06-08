@@ -179,20 +179,290 @@ mais si c’est le cas, il se doit d’effacer l’instance <cite>camera</cite> 
 <dl class="class">
 <dt id="PiCameraGUI.PiCameraGUI">
 <em class="property">class </em><code class="descclassname">PiCameraGUI.</code><code class="descname">PiCameraGUI</code><span class="sig-paren">(</span><em>root</em>, <em>camera</em>, <em>title</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Classe pour l’interface graphique de la PiCamera</p>
-<p>Fonctionnalités:
-Aperçu en temps réel
-Aperçu de la photo prise
-Prise de photo, vidéo et de photos en séquence
-Zoom et déplacement à l’intérieur de l’image en temps réel
-Ajout de texte et du temps présent sur la photo
-Différents formats de photo supportés
-Rotation et revirement horizontal et vertical de l’image</p>
-<p>Arguments:
-root: instance de Tk() ou Toplevel() de la librairie tkinter</p>
-<p>camera: instance de PiCamera() du module picamera</p>
-<p>title: &lt;string&gt; le titre de la fenêtre</p>
-<p>voir le fichier main.py pour un exemple d’utilisation</p>
+<dd><p>Classe pour l’interface graphique de la <code class="docutils literal notranslate"><span class="pre">PiCamera</span></code></p>
+<p><strong>Fonctionnalités</strong></p>
+<ul class="simple">
+<li>Aperçu en temps réel</li>
+<li>Aperçu de la photo prise</li>
+<li>Prise de photo, vidéo et de photos en séquence</li>
+<li>Zoom et déplacement à l’intérieur de l’image en temps réel</li>
+<li>Ajout de texte et du temps présent sur la photo</li>
+<li>Différents formats de photo supportés</li>
+<li>Rotation et revirement horizontal et vertical de l’image</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>root</strong> (<em>Tk</em><em>(</em><em>) </em><em>ou Toplevel</em><em>(</em><em>)</em>) – Fenêtre principal issue de la librairie <code class="docutils literal notranslate"><span class="pre">tkinter</span></code></li>
+<li><strong>camera</strong> (<em>PiCamera</em><em>(</em><em>)</em>) – Objet caméra issu du module <code class="docutils literal notranslate"><span class="pre">picamera</span></code></li>
+<li><strong>title</strong> (<em>String</em>) – Titre de la fenêtre</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Voir le fichier <code class="docutils literal notranslate"><span class="pre">main.py</span></code> pour un exemple d’utilisation</p>
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.capture">
+<code class="descname">capture</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.capture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.capture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prends une photo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.captureSeq">
+<code class="descname">captureSeq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.captureSeq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.captureSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prends une séquence de photos</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.captureSpace">
+<code class="descname">captureSpace</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.captureSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.captureSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prends une photo avec la barre espace</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.centrerAide">
+<code class="descname">centrerAide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.centrerAide"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.centrerAide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place la fenêtre d’aide au centre de l’écran</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.changerRepertoirePhoto">
+<code class="descname">changerRepertoirePhoto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.changerRepertoirePhoto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.changerRepertoirePhoto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change le répertoire d’enregistrement d’un fichier photo</p>
+<p>Ouvre une nouvelle fenêtre</p>
+<p>self.photo_dir: str</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.changerRepertoireVideo">
+<code class="descname">changerRepertoireVideo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.changerRepertoireVideo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.changerRepertoireVideo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change le répertoire d’enregistrement d’un fichier vidéo</p>
+<p>Ouvre une nouvelle fenêtre</p>
+<p>self.video_dir: str</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createAide">
+<code class="descname">createAide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createAide"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createAide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée une fenêtre indiquant les informations relatives au logiciel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createBindings">
+<code class="descname">createBindings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createBindings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createBindings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée les liaisons entre les widgets et les événements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createFrames">
+<code class="descname">createFrames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createFrames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createFrames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée les sous-fenêtres</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createImage">
+<code class="descname">createImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée la sous-fenêtre <code class="docutils literal notranslate"><span class="pre">Image</span></code> et initialise les widgets de celle-ci</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createLabelFrames">
+<code class="descname">createLabelFrames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createLabelFrames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createLabelFrames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée les sous-fenêtres des options</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createMenu">
+<code class="descname">createMenu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createMenu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée la barre de menu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createRes">
+<code class="descname">createRes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createRes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createRes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée la sous-fenêtre <code class="docutils literal notranslate"><span class="pre">Résolution</span></code> et initialise les widgets de celle-ci</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createSave">
+<code class="descname">createSave</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createSave"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createSave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée la sous-fenêtre <code class="docutils literal notranslate"><span class="pre">Sauvegarder</span></code> et initialise les widgets de celle-ci</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createText">
+<code class="descname">createText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée la sous-fenêtre <code class="docutils literal notranslate"><span class="pre">Texte</span></code> et initialise les widgets de celle-ci</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.createWidgets">
+<code class="descname">createWidgets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.createWidgets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.createWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crée les boutons de l’interface des commandes et la barre de menu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.get_cmdsize">
+<code class="descname">get_cmdsize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.get_cmdsize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.get_cmdsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retourne la taille des sectoins <code class="docutils literal notranslate"><span class="pre">Séquence</span></code> et <code class="docutils literal notranslate"><span class="pre">État</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.hflip">
+<code class="descname">hflip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.hflip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.hflip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effectue le revirement horizontal de l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.posPreview">
+<code class="descname">posPreview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.posPreview"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.posPreview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trouve la position de l’aperçu en temps réel dans l’interface</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.quit">
+<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.quit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.quit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quitte le programme</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.recVideo">
+<code class="descname">recVideo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.recVideo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.recVideo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prends un enregistrement vidéo
+Appelé chaque fois que le bouton vidéo est appuyé</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.reset_all">
+<code class="descname">reset_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.reset_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.reset_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Réinitialise tous les paramètres</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.reset_size">
+<code class="descname">reset_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.reset_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.reset_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effectue la réinitialisation de la taille de l’aperçu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effectue la rotation de l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_expmode">
+<code class="descname">set_expmode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_expmode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_expmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe le <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">d'exposition</span></code> de l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_iso">
+<code class="descname">set_iso</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_iso"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_iso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe l’<code class="docutils literal notranslate"><span class="pre">ISO</span></code> de l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_overlayText">
+<code class="descname">set_overlayText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_overlayText"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_overlayText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe le texte à afficher sur l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_previewPos">
+<code class="descname">set_previewPos</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_previewPos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_previewPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ajuste la position de l’aperçu à la fenêtre</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_previewScale">
+<code class="descname">set_previewScale</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_previewScale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_previewScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe l’échelle de l’aperçu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_res">
+<code class="descname">set_res</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_res"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_res" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vérifie et fixe la résolution personnalisée</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_resdef">
+<code class="descname">set_resdef</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_resdef"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_resdef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe la résolution parmi les modes par défaut</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_sequence">
+<code class="descname">set_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe le nombre de photos à prendre en séquence</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.set_shutter">
+<code class="descname">set_shutter</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.set_shutter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.set_shutter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixe le <code class="docutils literal notranslate"><span class="pre">shutter</span> <span class="pre">speed</span></code> de l’image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.update_capture">
+<code class="descname">update_capture</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.update_capture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.update_capture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualise l’image de la dernière capture</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.update_etatVid">
+<code class="descname">update_etatVid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.update_etatVid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.update_etatVid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualise l’état de l’enregistrement vidéo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.update_nomFichier">
+<code class="descname">update_nomFichier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.update_nomFichier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.update_nomFichier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualise le nom du fichier</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.update_resactuelle">
+<code class="descname">update_resactuelle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.update_resactuelle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.update_resactuelle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualise l’affichage de la résolution et du champ de vision actuel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.update_temps">
+<code class="descname">update_temps</code><span class="sig-paren">(</span><em>file=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.update_temps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.update_temps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualise l’affichage du temps</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.verify_resH">
+<code class="descname">verify_resH</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.verify_resH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.verify_resH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vérifie si la résolution en hauteur entrée par l’utilisateur est d’un format adéquat <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.verify_resW">
+<code class="descname">verify_resW</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.verify_resW"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.verify_resW" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vérifie si la résolution en largeur entrée par l’utilisateur est d’un format adéquat <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.verify_text">
+<code class="descname">verify_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.verify_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.verify_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vérifie et formatte les caractères invalides du texte personnalisé</p>
+<p>La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII</p>
+<p>Remplace les caractères invalides par <code class="docutils literal notranslate"><span class="pre">%</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiCameraGUI.PiCameraGUI.vflip">
+<code class="descname">vflip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/PiCameraGUI.html#PiCameraGUI.vflip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PiCameraGUI.PiCameraGUI.vflip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effectue le revirement vertical de l’image</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

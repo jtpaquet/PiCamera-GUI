@@ -31,21 +31,19 @@ VIDEO_DIR = 'Vidéo/'
 
 class PiCameraGUI(Frame):
     """
-    Classe pour l'interface graphique de la PiCamera
+    Classe pour l'interface graphique de la ``PiCamera``
     
-    Fonctionnalités
-    ===============
+    **Fonctionnalités**
+    
 
-    Aperçu en temps réel
-    Aperçu de la photo prise
-    Prise de photo, vidéo et de photos en séquence
-    Zoom et déplacement à l'intérieur de l'image en temps réel
-    Ajout de texte et du temps présent sur la photo
-    Différents formats de photo supportés
-    Rotation et revirement horizontal et vertical de l'image
+    * Aperçu en temps réel
+    * Aperçu de la photo prise
+    * Prise de photo, vidéo et de photos en séquence
+    * Zoom et déplacement à l'intérieur de l'image en temps réel
+    * Ajout de texte et du temps présent sur la photo
+    * Différents formats de photo supportés
+    * Rotation et revirement horizontal et vertical de l'image
     
-    Arguments
-    =========
 
     :param root: Fenêtre principal issue de la librairie ``tkinter``
     :type  root: Tk() ou Toplevel()
@@ -62,7 +60,12 @@ class PiCameraGUI(Frame):
         
     # Constructeur
     def __init__(self, root, camera, title):
+	"""
+	Initialise la fenêtre, les paramètres de la caméra, les sous-fenêtres et widgets, l'aperçu, 
+	la gestion des événements et les autres attributs utiles au fonctionnement de l'application
         
+	"""
+
         # Initialisation de la fenêtre
         self.mainFrame = Frame.__init__(self, root)
         self.root = root
@@ -107,19 +110,28 @@ class PiCameraGUI(Frame):
         
         
     # Destructeur
-    # S'assure d'effacer l'instance de la camera pour éviter des problèmes de mémoire
     def __del__(self):
+	"""
+	S'assure d'effacer l'instance de ``PiCamera`` pour éviter des problèmes de mémoire
+
+	"""
+
         self.camera.stop_preview()
         del self.camera
 
 
+	"""
+	Cette section contient tout ce qui rapporte à la création de l'interface, c'est-à-dire
+	Les fenêtres, les sous-fenêtres d'options, les sous-fenêtres d'aperçu et la barre de menu
+	
+	"""
 
-    # Cette section contient tout ce qui rapporte à la création de l'interface, c'est-à-dire
-    # Les fenêtres, les sous-fenêtres d'options, les sous-fenêtres d'aperçu et la barre de menu
 
-
-    # Crée les sous-fenêtres
     def createFrames(self):
+	"""
+	Crée les sous-fenêtres
+
+	"""
         
         # Crée la sous-fenêtre virtuelle de la section des aperçus
         self.sectionFrame = Frame(self.root)
@@ -165,8 +177,12 @@ class PiCameraGUI(Frame):
         self.etatFrame.grid_propagate(0)
 
 
-    # Crée les sous-fenêtres des options
     def createLabelFrames(self):
+	"""
+	Crée les sous-fenêtres des options
+
+	"""
+
         # Division des fenêtres
         div = 1.75
         
@@ -195,8 +211,11 @@ class PiCameraGUI(Frame):
         self.createSave()
         
         
-    # Crée la barre de menu
     def createMenu(self):
+	"""
+	Crée la barre de menu
+
+	"""
         
         # Crée un menu virtuel
         self.menubar = Menu(self)
@@ -232,8 +251,11 @@ class PiCameraGUI(Frame):
         self.master.config(menu=self.menubar)
         
         
-    # Crée la sous-fenêtre "Image" et initialise les widgets de celle-ci
     def createImage(self):
+	"""
+	Crée la sous-fenêtre ``Image`` et initialise les widgets de celle-ci
+
+	"""
         
         # Crée l'emplacement de la glissoire de zoom
         self.zoom_Frame=Frame(self.image_Frame)
@@ -307,12 +329,14 @@ class PiCameraGUI(Frame):
         # Crée le tooltip qui s'affichera au dessus du texte "Modes d'exposition"
         note = "Activer un mode d'exposition\nempêche la configuration manuelle\nde l'iso et du shutter speed"
         createToolTip(self.modeLabel, note)
-##        Label(self.image_Frame, text="Activer un mode d'exposition empêche la configuration manuelle de l'iso et du shutter speed").grid(row=6,column=3,sticky='w')
-
         
         
-    # Crée la sous-fenêtre "Résolution" et initialise les widgets de celle-ci
     def createRes(self):
+	"""
+	Crée la sous-fenêtre ``Résolution`` et initialise les widgets de celle-ci
+
+	"""
+
         self.resdefFrame = Frame(self.resFrame)
         self.resdefFrame.grid(row=0, sticky='w')
         
@@ -376,8 +400,11 @@ class PiCameraGUI(Frame):
         self.champLabel.grid(row=1, sticky='w')
         
         
-    # Crée la sous-fenêtre "Texte" et initialise les widgets de celle-ci
     def createText(self):
+	"""
+	Crée la sous-fenêtre ``Texte`` et initialise les widgets de celle-ci
+
+	"""
         self.annoterTemps = BooleanVar(False)  # Annoter le temps (Bool)
         self.textVar = StringVar("")  # Texte personnalisé (String)
         
@@ -413,8 +440,11 @@ class PiCameraGUI(Frame):
         createToolTip(self.textEntry, note)
         
 
-    # Crée la sous-fenêtre "Sauvegarder" et initialise les widgets de celle-ci
     def createSave(self):
+	"""
+	Crée la sous-fenêtre ``Sauvegarder`` et initialise les widgets de celle-ci
+	
+	"""
         self.fichierVar = StringVar()  # Nom du fichier (String)
         
         self.fichierFrame = Frame(self.saveFrame)
@@ -434,9 +464,6 @@ class PiCameraGUI(Frame):
         self.fichierEntry = Entry(self.fichierFrame, textvariable=self.fichierVar)
         self.fichierEntry.grid(row=1, column=1,sticky='w')
         Button(self.saveFrame, text="Confirmer", command=self.update_nomFichier).grid(row=1)
-##        Label(self.saveFrame, text='').grid(row=2,sticky='w')
-
-##        Label(self.saveFrame, text="Le format des fichiers vidéo\nest .h264 ar défaut.",justify='left').grid(row=3,sticky='w')
 
         # Aperçu du nom de fichier photo
         self.apercuFichierphoto = Label(self.saveFrame, text="Fichier photo: capture.png")
@@ -456,8 +483,12 @@ class PiCameraGUI(Frame):
         self.apercuRepertoirevideo = Label(self.saveFrame, text="Répertoire vidéo: " + self.video_dir)
         self.apercuRepertoirevideo.grid(row=8, sticky='w')
 
-    # Crée une fenêtre indiquant les informations relatives au logiciel 
+
     def createAide(self):
+	"""
+	Crée une fenêtre indiquant les informations relatives au logiciel 
+
+	"""
         self.aide = Tk()
         self.aide.title("À propos")
         self.aideFrame = Frame(self.aide)
@@ -466,12 +497,17 @@ class PiCameraGUI(Frame):
         self.centrerAide()
 
 
+	"""
+	Cette section contient les commandes des widgets et la fonction qui initialise les boutons de commande
+	
+	"""
 
-    # Cette section contient les commandes des widgets et la fonction qui initialise les boutons de commande
 
-
-    # Crée les boutons de l'interface des commandes et la barre de menu
     def createWidgets(self):
+	"""
+	Crée les boutons de l'interface des commandes et la barre de menu
+	
+	"""
         # Crée le bouton capture
         # Ajuste la taille de l'image du bouton capture
         self.cameraPNG=PhotoImage(file=ASSETS_DIR+"camera.png")
@@ -562,33 +598,51 @@ class PiCameraGUI(Frame):
         self.createMenu()
 
 
-    # Effectue le revirement horizontal de l'image
     def hflip(self):
+	"""
+	Effectue le revirement horizontal de l'image
+
+	"""
+
         self.hflip = not self.hflip
         self.camera.hflip = not self.camera.hflip
         
         
-    # Effectue le revirement vertical de l'image
     def vflip(self):
+	"""
+	Effectue le revirement vertical de l'image
+
+	"""
+
         self.vflip = not self.vflip
         self.camera.vflip = not self.camera.vflip
         
 
-    # Effectue la rotation de l'image
     def rotate(self):
+	"""
+	Effectue la rotation de l'image
+
+	"""
+
         self.angle += 90
         if self.angle == 360:
             self.angle = 0
         self.camera.rotation = self.angle
         
         
-    # Prends une photo avec la barre espace
     def captureSpace(self,event):
+	"""
+	Prends une photo avec la barre espace
+
+	"""
         self.capture()
         
 
-    # Prends une photo
     def capture(self):
+	"""
+	Prends une photo
+
+	"""
         
         # Affiche une image d'attente dnas le canvas prévu à cet endroit
         imWait = self.etatCanvas.create_image((4,4), image=self.waitPNG, anchor='n'+'w')
@@ -614,8 +668,11 @@ class PiCameraGUI(Frame):
         self.update_capture()
         
         
-    # Prends une séquence de photos
     def captureSeq(self):
+	"""
+	Prends une séquence de photos
+
+	"""
         
         # Affiche une image d'attente dans le canvas prévu à cet endroit
         imWait = self.etatCanvas.create_image((4,4), image=self.waitPNG, anchor='n'+'w')
@@ -643,9 +700,12 @@ class PiCameraGUI(Frame):
         self.update_capture()
         
         
-    # Prends un enregistrement vidéo
-    # Appelé chaque fois que le bouton vidéo est appuyé
     def recVideo(self):
+	"""
+	Prends un enregistrement vidéo
+	Appelé chaque fois que le bouton vidéo est appuyé
+
+	"""
         # Si l'enregistrement est en cours
         if self.recording:
             # Arrête l'enregistrement
@@ -683,6 +743,10 @@ class PiCameraGUI(Frame):
         
     # Crée les liaisons entre les widgets et les événements
     def createBindings(self):
+	"""
+	Crée les liaisons entre les widgets et les événements
+
+	"""
         # Lorsque la fenêtre principale bouge, la position de l'aperçu en temps réel s'adaptera
         self.root.bind("<Configure>", self.set_previewPos)
         # Prends une photo en appuyant sur la barre espace
@@ -699,8 +763,11 @@ class PiCameraGUI(Frame):
         self.resListbox.bind('<FocusOut>', self.resListbox.selection_clear(0, "end"))
 
 
-    # Effectue la réinitialisation de la taille de l'aperçu
     def reset_size(self):
+	"""
+	Effectue la réinitialisation de la taille de l'aperçu
+
+	"""
         self.zoomScale.set(0)
         self.xzoomScale.set(0)
         self.yzoomScale.set(0)
@@ -714,8 +781,12 @@ class PiCameraGUI(Frame):
         self.set_expmode()
         
 
-    # Réinitialise tous les paramètres
     def reset_all(self):
+	"""
+	Réinitialise tous les paramètres
+
+	"""
+
         self.update_idletasks()
         self.reset_size()
         self.hflip = False
@@ -743,24 +814,31 @@ class PiCameraGUI(Frame):
         self.dernierFichier = ''
         self.update_capture()
 
-        
+       
+    def quit(self):
+	"""
+	Quitte le programme
 
-
+	"""
+	# Appelle le destructeur de la classe pour éviter des fuites de mémoire
+        self.__del__()
         # Quitte le programme
-        def quit(self):
-            # Appelle le destructeur de la classe pour éviter des fuites de mémoire
-            self.__del__()
-            # Quitte le programme
-            exit()
+        exit()
             
             
-            
-    # Cette section contient les fonctions qui fixent des variables aux attributs de la classe Application
-    # et qui exécute la fonction propre à cette variable
+    """
+    Cette section contient les fonctions qui fixent des variables aux attributs de la classe Application
+    et qui exécute la fonction propre à cette variable
+    
+    """
 
 
-    # Ajuste la position de l'aperçu à la fenêtre
     def set_previewPos(self,event):
+	"""
+	Ajuste la position de l'aperçu à la fenêtre
+
+	"""
+
         # Actualise les tâches passives (e.g. position des fenêtres). Utilisé pour la configuration de la géométrie de la fenêtre
         self.update_idletasks()
         
@@ -773,8 +851,11 @@ class PiCameraGUI(Frame):
         self.camera.preview.window = self.winPreview
         
         
-    # Fixe le texte à afficher sur l'image
     def set_overlayText(self):
+	"""
+	Fixe le texte à afficher sur l'image
+
+	"""
         if self.annoterTemps.get():
             # Affiche le temps sur une première ligne et le texte personnalisé sur la deuxième
             self.camera.annotate_text = "{}\n {}".format(self.temps, self.texte)
@@ -784,8 +865,11 @@ class PiCameraGUI(Frame):
             self.camera.annotate_text = self.texte
                     
 
-    # Fixe l'échelle de l'aperçu
     def set_previewScale(self,event):
+	"""
+	Fixe l'échelle de l'aperçu
+
+	"""
         # Amène l'échelle du zoom en pourcentage
         # xscale et yscale correspondent à des étirements unidimensionnels en x et y respectivement,
         # d'où la multiplication par zscale pour obtenir la position
@@ -799,8 +883,11 @@ class PiCameraGUI(Frame):
         self.camera.zoom = (xscale*zscale, yscale*zscale, 1.05-zscale, 1.05-zscale)
         
         
-    # Vérifie et fixe la résoltuion personnalisée
     def set_res(self):
+	"""
+	Vérifie et fixe la résolution personnalisée
+
+	"""
         
         # Ouvre une boîte de dialogue et soulève une exception si aucune donnée n'est entrée dans une des deux boîtes d'entrée
         if self.resPersoW.get() == '' or self.resPersoH.get() == '':
@@ -842,8 +929,12 @@ class PiCameraGUI(Frame):
         self.update_resactuelle()
         
         
-    # Fixe la résoltuion parmi les modes par défaut
     def set_resdef(self):
+	"""
+	Fixe la résolution parmi les modes par défaut
+
+	"""
+
         i = self.resListbox.curselection()  # Indice de l'élément sélectionné de la boîte des résolutions par défaut
         item = self.list_res[i[0]]  # Élément sélectionné de la boîte des résolutions par défaut
         self.resolution = (item[0], item[1])
@@ -856,33 +947,48 @@ class PiCameraGUI(Frame):
         # Actualise l'aperçu de la résolution
         self.update_resactuelle()
         
-        
-    # Fixe le nombre de photos à prendre en séquence
+
     def set_sequence(self):
+	"""
+	Fixe le nombre de photos à prendre en séquence
+
+	"""
         self.nbseq = self.seqSpinbox.get()
         
         
-    # Fixe l'iso de l'image
     def set_iso(self,event):
+	"""
+	Fixe l'``ISO`` de l'image
+
+	"""
         self.camera.iso = self.isoScale.get()
         
         
-    # Fixe le shutter speed de l'image
     def set_shutter(self,event):
+	"""
+	Fixe le ``shutter speed`` de l'image
+
+	"""
         self.camera.shutter_speed = int(self.shutterScale.get())
         
     
-    # Fixe le shutter speed de l'image
     def set_expmode(self):
+	"""
+	Fixe le ``mode d'exposition`` de l'image
+	
+	"""
         self.camera.exposure_mode = self.expListbox.get("active")
 
+    """
+    Cette section contient les fonctions qui actualisent les aperçus
+	
+    """
 
-    # Cette section contient les fonctions qui actualisent les aperçus
-
-
-    # Actualise l'affichage du temps
-    # Actualise l
     def update_temps(self, file=True):
+	"""
+	Actualise l'affichage du temps
+	
+	"""
         self.temps = strftime("%Y-%m-%d-%H:%M:%S" , localtime())
         self.tempsLabel.config(text=self.temps, justify='left')
         self.verify_text()
@@ -891,8 +997,12 @@ class PiCameraGUI(Frame):
             self.update_nomFichier()
 
         
-    # Actualise le nom du fichier
     def update_nomFichier(self):
+	"""
+	Actualise le nom du fichier
+	
+	"""
+
         if self.fichierVar.get() != '':
             self.nomFichier = self.fichierVar.get() + '-' + self.temps
         else:
@@ -906,14 +1016,20 @@ class PiCameraGUI(Frame):
         self.apercuRepertoirevideo.config(text="Répertoire vidéo: " + self.video_dir)
         
         
-    # Actualise l'état de l'enregistrement vidéo
     def update_etatVid(self):
+	"""
+	Actualise l'état de l'enregistrement vidéo
+	
+	"""
         self.etatCaptureLabel.config(text=self.etatCapture[0])
         self.etatCaptureLabel2.config(text=self.etatCapture[1])
         
         
-    # Actualise l'image de la dernière capture
     def update_capture(self):
+	"""
+	Actualise l'image de la dernière capture
+	
+	"""
         if self.dernierFichier == '':
             # Affiche l'image par défaut
             self.captureCanvas.create_image((0,0),image=self.imagedefaut, anchor='nw')
@@ -928,18 +1044,25 @@ class PiCameraGUI(Frame):
             self.imCapture = self.captureCanvas.create_image((0,0),image=self.previewCapture, anchor='nw')
             
             
-    # Actualise l'affichage de la résolution et du champ de vision actuel
     def update_resactuelle(self):
+	"""
+	Actualise l'affichage de la résolution et du champ de vision actuel
+	
+	"""
         self.resactuelleLabel.config(text="Résolution actuelle: {}x{}".format(self.resolution[0], self.resolution[1]))
         self.champLabel.config(text="Champ de vision: {}".format(self.champ))
         
 
+    """
+    Cette section contient des fonctions de vérification et de géométrie
+    
+    """
 
-    # Cette section contient des fonctions de vérification et de géométrie
-
-
-    # Vérifie si la résolution en largeur entrée par l'utilisateur est d'un format adéquat (int)
     def verify_resW(self):
+	"""
+	Vérifie si la résolution en largeur entrée par l'utilisateur est d'un format adéquat ``int``
+	
+	"""
         try:
             if self.resPersoW.get() == '':
                 return 0
@@ -951,8 +1074,11 @@ class PiCameraGUI(Frame):
             raise ValueError("La résolution devrait être composée de deux entiers")
 
 
-    # Vérifie si la résolution en hauteur entrée par l'utilisateur est d'un format adéquat (int)
     def verify_resH(self):
+	"""
+	Vérifie si la résolution en hauteur entrée par l'utilisateur est d'un format adéquat ``int``
+	
+	"""
         try:
             if self.resPersoH.get() == '':
                 return 0
@@ -964,10 +1090,15 @@ class PiCameraGUI(Frame):
             raise ValueError("La résolution devrait être composée de deux entiers")
         
         
-    # Vérifie et formatte les caractères invalides du texte personnalisé
-    # La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII
-    # Remplace les caractères invalides par "%"
     def verify_text(self):
+	"""
+	Vérifie et formatte les caractères invalides du texte personnalisé
+
+	La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII
+
+	Remplace les caractères invalides par ``%``
+	
+	"""
         self.texte = self.textVar.get()
         for i in range(len(self.texte)):
             if ord(self.texte[i]) > 128:
@@ -975,16 +1106,23 @@ class PiCameraGUI(Frame):
         self.set_overlayText()
 
 
-    # Retourne la taille des sections "Séquence" et "État"
+
     def get_cmdsize(self):
+	"""
+	Retourne la taille des sectoins ``Séquence`` et ``État``
+
+	"""
         self.update_idletasks()
         w1 = self.captureFrame.winfo_reqwidth()-10
         w2 = self.commandesFrame.winfo_reqwidth()
         return (int((w1 - w2)/2), self.commandesFrame.winfo_reqheight()+7*BD)
 
 
-    # Trouve la position de l'aperçu en temps réel dans l'interface
     def posPreview(self):
+	"""
+	Trouve la position de l'aperçu en temps réel dans l'interface
+
+	"""
         self.update_idletasks()
         # Calcule la position du coin supérieur gauche
         wf, hf = self.previewFrame.winfo_width(), self.previewFrame.winfo_height()
@@ -997,8 +1135,11 @@ class PiCameraGUI(Frame):
         return pos
 
 
-    # Place la fenêtre d'aide au centre de l'écran
     def centrerAide(self):
+	"""
+	Place la fenêtre d'aide au centre de l'écran
+
+	"""
         self.aide.update_idletasks()
         w = self.aide.winfo_width()
         h = self.aide.winfo_height()
@@ -1008,17 +1149,28 @@ class PiCameraGUI(Frame):
         self.aide.geometry('{}x{}+{}+{}'.format(w, h, x, y))
         
     
-    # Change le répertoire d'enregistrement d'un fichier photo
-    # Ouvre une nouvelle fenêtre
-    # self.photo_dir: str
     def changerRepertoirePhoto(self):
+	"""
+	Change le répertoire d'enregistrement d'un fichier photo
+
+	Ouvre une nouvelle fenêtre
+
+	self.photo_dir: str
+
+	"""
         self.photo_dir = filedialog.askdirectory(title = "Choisir un répertoire photo")+"/"
         self.update_nomFichier()
     
     
-    # Change le répertoire d'enregistrement d'un fichier vidéo
-    # Ouvre une nouvelle fenêtre
     def changerRepertoireVideo(self):
+	"""
+	Change le répertoire d'enregistrement d'un fichier vidéo
+
+	Ouvre une nouvelle fenêtre
+
+	self.video_dir: str
+
+	"""
         self.video_dir = filedialog.askdirectory(title = "Choisir un répertoire vidéo")+"/"
         self.update_nomFichier()
 

@@ -29,7 +29,7 @@ Démarrage rapide
 
 Si vous avez téléchargé le dossier au complet, vous remarquerez deux dossiers dans le répertoire principal: **Captures** et **Vidéo**. Ce sont les dossiers dans lesquels
 seront enregistrées vos photos et vidéos prises avec l'application. Si vous souhaitez enregistrer vos captures dans un autre répertoire vous pouvez commencer par ouvrir le 
-menu **Fichier** et choisir de nouveaux répertoires. Pour plus d'options, consultez la section :ref:`save`.
+menu **Fichier** et choisir un nouveau répertoire. Pour plus d'options, consultez la section :ref:`save`.
 
 Vous pouvez maintenant prendre des photos en appuyant sur la barre espace ou sur le bouton avec l'icône d'un appareil photo dans le menu *Commandes* sous l'aperçu. 
 Remarquez la barre d'état en bas à droite: elle indique si vous pouvez prendre une photo et ensuite dans quel répertoire la capture est enregistrée.
@@ -95,6 +95,10 @@ Veuillez consulter ce `lien`_ pour de plus amples explications.
 
 	On ne peut changer l'ouverture mécanique de la PiCamera. Par contre, vous pouvez zoomer avec l'option décrite plus haut, mais sachez que l'ouverture reste fixe.
 
+.. note::
+
+	Poser l'``ISO`` ou le ``shutter speed`` à 0 activera l'ajustement automatique de ces paramètres.
+
 
 
 .. _resolution:
@@ -102,6 +106,23 @@ Veuillez consulter ce `lien`_ pour de plus amples explications.
 Changer la résolution
 =====================
 
+L'application vous permet de changer la résolution de l'image. À l'ouverture du programme, la résolution sera de 1280x720 px (4:3). 
+Il y a plusieurs résolutions préprogrammées dans la boîte ``Résolutions par défaut``. 
+Pour en sélectionner une, appuyer sur celle désirée et confirmez votre choix en appuyant sur le bouton confirmer directement sous la boîte. 
+Vous pouvez voir la résolution actuelle un peu plus bas. 
+Si vous souhaitez configurer votre propre résolution, vous pouvez entrer la largeur et la hauteur de l'image dans les deux boîtes sous ``Résolution personnalisée``. 
+Pour confirmer votre choix, appuyez sur le bouton directement sous les deux boîtes. Le bouton au-dessus sert aux résolutions préprogrammées.   
+
+
+.. note::
+
+	Pour entrer votre résolution personnalisée, vous devez entrer deux nombres entiers. La résolution doit être supérieure à 64x64 px, la résolutoin minimale de la PiCamera, 
+	et inférieure à 2592x1944 px. 
+
+.. note::
+
+	Certains modes préprogrammés offrent un ``champ de vision`` partiel. Lorsque vous entrez une résolution personnalisée, le champ de vision sera toujours complet. 
+	Si vous voulez le changer, utilisez la fonctionnalité ``Zoom``. Vous pouvez voir la configuration du champ de vision actuel sous la résolution actuelle.
 
 
 .. _text:
@@ -110,12 +131,53 @@ Afficher un texte
 =================
 
 
+Vous pouvez annoter du texte sur la photo. Pour ce faire, écrivez le texte à annoter à côté de la boîte ``Personnalisé`` dans la section **Texte**. Vous pouvez voir un aperçu ce 
+ce qui sera affiché dans l'aperçu en temps réel à droite. Vous pouvez aussi annoter le temps présent en cochant la boîte **Annoter le temps à la photo**. Il sera annoté sous le format
+affiché juste au-dessous de la boîte. 
+
+
+
+.. note::
+
+	La fonction `annotate_text`_ ne peut contenir que les 128 caractères du code `ASCII`_, ce qui exclue les lettres accentuées.
+	Écrire un caractère interdit le changera automatiquement par ``%`` pour vous en indiquer.
+
+
+
+.. _annotate_text: https://picamera.readthedocs.io/en/release-1.10/api_camera.html#picamera.camera.PiCamera.annotate_text
+.. _ASCII: http://ee.hawaii.edu/~tep/EE160/Book/chap4/subsection2.1.1.1.html
+
+
 
 .. _save:
 
-Modifier l'endroit de la sauvegarde
-===================================
+Modification de la sauvegarde
+=============================
 
+* Format
+
+Vous pouvez changer le format du fichier en appuyant sur les flèches de la ``spinbox`` dans la section ``Sauvegarde``. Les formats disponibles sont
+
+	* ``'jpeg'`` - Write a JPEG file
+	* ``'png'`` - Write a PNG file
+        * ``'gif'`` - Write a GIF file
+        * ``'bmp'`` - Write a Windows bitmap file
+        * ``'rgb'`` - Write the raw image data to a file in 24-bit RGB format
+        * ``'rgba'`` - Write the raw image data to a file in 32-bit RGBA format
+
+* Nom du fichier
+
+Vous pouvez modifier le nom du fichier de la capture en écrivant dans la boîte ``Nom du fichier``. Notez que le temps est ajouté suite au nom que vous aurez donné au fichier pour 
+empêcher d'enregistrer une capture par-dessus une capture déjà existante. Appuyez sur le bouton ``Confirmer`` pour valider votre choix.
+
+* Changer de répertoire
+
+Si vous souhaitez enregistrer vos captures dans un autre répertoire vous pouvez commencer par ouvrir le 
+menu **Fichier** et choisir un nouveau répertoire. Par défaut, le répertoire pour les photos est ``Capture/`` et celui des vidéos est ``Vidéo/``
+
+* Aperçus
+
+Si vous n'êtes pas sûr de l'endroit de la sauvegarde ou du nom de fichier, vous pouvez voir un aperçu sous le bouton ``Confirmer``
 
 .. _other:
 
@@ -125,16 +187,20 @@ Autres fonctionnalités
 
 * Changer le nombre de prise de photo en séquence
 
-
-
-* Changer le temps de la capture vidéo
+Pour changer le nombre de photos à prendre en séquence, cliquez sur les flèches de la ``spinbox`` dans la section ``Séquence`` du menu des commandes.
 
 
 
 * Revirements et rotation
 
+Vous pouvez effectuer un revirement horizontal, vertical ou une rotation de l'image en appuyant sur les boutons associés à ces fonctionnalités du menu des commandes.
+
+
 
 * Tout réinitialiser
+
+Vous pouvez réinitialiser l'application comme elle était à l'ouverture du programme dans le menu ``Fichier`` et en appuyant sur la commande **Tout réinitialiser**.
+
 
 
 

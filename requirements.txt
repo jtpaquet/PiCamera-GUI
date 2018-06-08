@@ -50,7 +50,6 @@ pyasn1==0.1.9
 pycrypto==2.6.1
 pygame==1.9.3
 Pygments==2.2.0
-pygobject==3.22.0
 pyinotify==0.9.6
 PyJWT==1.4.2
 pyOpenSSL==16.2.0

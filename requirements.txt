@@ -77,7 +77,6 @@ Sphinx==1.7.5
 sphinx-autobuild==0.7.1
 sphinx-rtd-theme==0.3.1
 sphinxcontrib-websupport==1.1.0
-spidev==3.3
 tornado==5.0.2
 touchphat==0.0.1
 twython==3.4.0
@@ -85,6 +84,3 @@ typing==3.6.4
 unicornhathd==0.0.3
 urllib3==1.22
 watchdog==0.8.3
-Werkzeug==0.11.15
-wxPython==3.0.2.0
-wxPython-common==3.0.2.0

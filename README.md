@@ -41,14 +41,14 @@ Sinon, vous pouvez télécharger le projet en tant que fichier compressé .zip e
 ### Ouvrir l'application
 
 
-Déplacer le fichier ayant cette icône sur le bureau de votre Raspberry Pi.
+Déplacer le fichier ayant cette icône sur le bureau de votre Raspberry Pi. Copiez le chemin du fichier (*right click > copy path*) du fichier ``PiCamera_exec`` et coller le chemin dans le fichier avec l'icône déplacé sur le bureau.
 
 En ouvrant ce fichier, l'interface graphique devrait s'ouvrir et vous devriez pouvoir l'utiliser. Assurez vous que la PiCamera soit bien branchée. Si l'erreur persiste, essayez de redémarrer le Rapsberry Pi.
 
 Sinon, vous pouvez ouvrir l'invite de commande dans le répertoire dans lequel se trouve les fichier et entrer la ligne de commande
 
 ```
-	$ python3 main.py
+	$ python3 picamera-gui/main.py
 ```
 
 ## Crée avec

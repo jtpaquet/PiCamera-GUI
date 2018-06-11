@@ -43,6 +43,7 @@ Vous pouvez importer le projet en entrant la commande suivante:
 ::
 	
 	$ sudo apt-get install git
+
 	$ git clone https://github.com/jtpaquet/PiCamera-GUI
 
 Sinon, vous pouvez télécharger le projet en tant que fichier compressé .zip et le déplacé dans le répertoire voulu.

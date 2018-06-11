@@ -16,7 +16,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../picamera-gui'))
-autodoc_mock_imports = ["tkinter", "fractions"]
+autodoc_mock_imports = ["tkinter", "fractions", "picamera"]
 
 
 

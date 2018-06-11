@@ -8,7 +8,8 @@ Pour accéder au logiciel,
 
 * Installer Python 3. Si votre système Raspberry Pi est à jour, vous pouvez ignorer cette section.
 * Télécharger le projet disponible `ici`_
-* Déplacer le fichier PiCamera [Desktop Entry] sur le bureau. Il devrait avoir l'icône du `module PiCamera V2`_
+* Déplacer le fichier PiCamera ``[Desktop Entry]`` sur le bureau. Il devrait avoir l'icône du `module PiCamera V2`_
+* Modifier le chemin du fichier à exécuter en ouvrant appuyant sur le ``[Desktop Entry]``. Voir :ref:`open`
 * Ouvrir le fichier PiCamera
 
 
@@ -56,8 +57,20 @@ Déplacer le fichier ayant cette icône sur le bureau.
 .. image:: _static/icone.png
     :align: center
 
+Copiez le chemin du fichier (*right click > copy path*) du fichier ``PiCamera_exec`` et coller le chemin dans le fichier avec l'icône déplacé sur le bureau.
+
+.. image:: _static/path.png
+    :align: center
+
+.. image:: _static/exec.png
+    :align: center
+
+Cela modifie le chemin du fichier à exécuter en ouvrant appuyant sur le ``[Desktop Entry]``. Cela exécute un script qui effectue la ligne de commande::
+
+	$ python3 picamera-gui/main.py
+
 En ouvrant ce fichier, l'interface graphique devrait s'ouvrir et vous devriez pouvoir l'utiliser. Assurez vous que la PiCamera soit bien branchée. Si l'erreur persiste, essayez de redémarrer le Rapsberry Pi.
 
-Sinon, vous pouvez ouvrir l'invite de commande dans le répertoire dans lequel se trouve les fichier et entrer la ligne de commande::
+Sinon, vous pouvez ouvrir l'invite de commande (F4) dans le répertoire principal dans lequel se trouve les fichiers et entrer la ligne de commande::
 
-	$ python3 main.py
+	$ python3 picamera-gui/main.py

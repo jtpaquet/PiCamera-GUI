@@ -23,7 +23,7 @@ Installation de Python 3
 
 Le plus important est de s'assurer que votre système contient les packages de la picamera. Pour ce faire, entrez la commande suivante dans l'invite de commande de votre Raspberry Pi:
 
-..code-block:: console
+::
 
 	$ sudo apt-get update
 	$ sudo apt-get install python3-picamera
@@ -40,7 +40,7 @@ Télécharger le projet
 
 Vous pouvez importer le projet en entrant la commande suivante:
 
-..code-block:: console
+::
 	
 	$ sudo apt-get install git
 	$ git clone https://github.com/jtpaquet/PiCamera-GUI

@@ -1135,9 +1135,9 @@ class PiCameraGUI(Frame):
         """
 	Vérifie et formatte les caractères invalides du texte personnalisé
 
-	La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII
+	* La fonction PiCamera.annotate_text() ne prend que les 128 premiers caractères du code ASCII
 
-	Remplace les caractères invalides par ``%``
+	* Remplace les caractères invalides par ``%``
 	
 	"""
         self.texte = self.textVar.get()
@@ -1199,9 +1199,9 @@ class PiCameraGUI(Frame):
         """
 	Change le répertoire d'enregistrement d'un fichier photo
 
-	Ouvre une nouvelle fenêtre
+	* Ouvre une nouvelle fenêtre
 
-	self.photo_dir: str
+	* self.photo_dir: str
 
 	"""
         self.photo_dir = filedialog.askdirectory(title = "Choisir un répertoire photo")+"/"
@@ -1213,9 +1213,9 @@ class PiCameraGUI(Frame):
         """
 	Change le répertoire d'enregistrement d'un fichier vidéo
 
-	Ouvre une nouvelle fenêtre
+	* Ouvre une nouvelle fenêtre
 
-	self.video_dir: str
+	* self.video_dir: str
 
 	"""
         self.video_dir = filedialog.askdirectory(title = "Choisir un répertoire vidéo")+"/"

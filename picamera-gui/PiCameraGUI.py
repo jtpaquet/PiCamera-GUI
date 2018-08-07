@@ -23,9 +23,9 @@ SIZE_OPTIONS = 400
 BD = 2
 
 # Répertoires
-CAPTURE_DIR = '../Captures/'
-ASSETS_DIR = '../Assets/'
-VIDEO_DIR = '../Vidéo/'
+CAPTURE_DIR = './Captures/'
+ASSETS_DIR = './Assets/'
+VIDEO_DIR = './Vidéo/'
 
 
 
@@ -278,13 +278,15 @@ class PiCameraGUI(Frame):
         # Crée la glissoire du déplacement en X
         Label(self.deplacementFrame, text='Déplacement').grid(row=0,columnspan=2,sticky='w')
         Label(self.deplacementFrame, text='X').grid(row=1,column=0,sticky='s')
-        self.xzoomScale = Scale(self.deplacementFrame, from_=0, to =100, orient="horizontal", cursor=50)
+        self.xzoomScale = Scale(self.deplacementFrame, from_=0, to =100, orient="horizontal")
         self.xzoomScale.grid(row=1,column=1,sticky='w')
+        self.xzoomScale.set(50)
 
         # Crée la glissoire du déplacement en X
         Label(self.deplacementFrame, text='Y').grid(row=2,column=0,sticky='s')
-        self.yzoomScale = Scale(self.deplacementFrame, from_=0, to =100, orient="horizontal", cursor=50)
+        self.yzoomScale = Scale(self.deplacementFrame, from_=0, to =100, orient="horizontal")
         self.yzoomScale.grid(row=2,column=1,sticky='w')
+        self.yzoomScale.set(50)
 
         # Crée le bouton de réinitialisation du zoom
         self.resetFrame = Frame(self.zoom_Frame)

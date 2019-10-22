@@ -44,7 +44,7 @@ picamera==1.13
 picraft==1.0
 piglow==1.2.4
 pigpio==1.38
-Pillow==4.0.0
+Pillow==6.2.0
 port-for==0.3.1
 pyasn1==0.1.9
 pycrypto==2.6.1

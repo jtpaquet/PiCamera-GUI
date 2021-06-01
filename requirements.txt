@@ -82,6 +82,6 @@ touchphat==0.0.1
 twython==3.4.0
 typing==3.6.4
 unicornhathd==0.0.3
-urllib3==1.22
+urllib3==1.26.5
 watchdog==0.8.3
 Werkzeug==0.11.15
